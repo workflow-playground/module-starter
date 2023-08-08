@@ -1,4 +1,7 @@
 develop:
+    docker compose up -d
+    docker compose ps
+    
     @echo "Trusting certificates..."
     symfony server:ca:install
     @echo "Installing dependencies..."

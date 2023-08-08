@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+###> doctrine/doctrine-bundle ###
+  database:
+    image: mysql:8.0-oracle
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: app
+      MYSQL_USER: app
+      MYSQL_PASSWORD: '!ChangeMe!'
+    ports:
+      - '23306:3306'
+    volumes:
+      - database_data:/var/lib/mysql:rw
+      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
+      # - ./docker/db/data:/var/lib/postgresql/data:rw
+###< doctrine/doctrine-bundle ###
+
+  cache:
+    image: redis/redis-stack:latest
+    ports:
+      - '26379:6379' # redis stack
+      - '28001:8001' # redis insight
+    volumes:
+      - redis:/data
+
+volumes:
+  redis:
+###> doctrine/doctrine-bundle ###
+  database_data:
+###< doctrine/doctrine-bundle ###
