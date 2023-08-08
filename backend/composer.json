@@ -15,6 +15,7 @@
         "symfony/yaml": "6.3.*"
     },
     "require-dev": {
+        "psalm/plugin-symfony": "^5.0",
         "vimeo/psalm": "^5.14"
     },
     "config": {
