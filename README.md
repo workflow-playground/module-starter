@@ -6,7 +6,7 @@
 
 1. [Install devbox](https://www.jetpack.io/devbox/docs/installing_devbox/)
 2. Start a new shell with all tools installed using `devbox shell`
-3. Start the module by running `just develop`
+3. Start the module by running `just build && just start`
 4. `open https://localhost:8000`
 
 ## Adding dependencies
