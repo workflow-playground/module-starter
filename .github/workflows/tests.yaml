@@ -1,0 +1,30 @@
+---
+name: Tests
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+      types:
+        - opened # To ensure we can have dummy env environments
+        - reopened
+        - synchronize # pushed commits
+
+concurrency:
+  group: tests-${{ github.ref }}
+  # Let them run, so we will see error markings on every commit
+  # Subject to change
+  cancel-in-progress: false
+  
+jobs:
+  static-analysis:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      # TODO: we don't want to rely on nixpkgs,
+      #       we should later build our own image and push it to our registry (?)
+      - name: Install devbox
+        uses: jetpack-io/devbox-install-action@v0.5.0
+      - name: Build
+        run: devbox run just build
+      - run: devbox run just test

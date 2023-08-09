@@ -1,15 +1,18 @@
+build:
+    @echo "Installing dependencies..."
+    symfony composer install
+
 develop:
     docker compose up -d
     docker compose ps
-    
     @echo "Trusting certificates..."
     symfony server:ca:install
-    @echo "Installing dependencies..."
-    symfony composer install
     symfony serve
     
 fix:
     vendor/bin/php-cs-fixer fix --diff
     
 test:
+    vendor/bin/parallel-lint src public migrations config
     vendor/bin/php-cs-fixer fix --dry-run --diff
+    vendor/bin/psalm
