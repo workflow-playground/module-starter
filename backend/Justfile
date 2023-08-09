@@ -20,3 +20,4 @@ static-analysis:
     
 test: static-analysis
     echo "Running tests..."
+    vendor/bin/phpunit
