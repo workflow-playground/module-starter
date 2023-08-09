@@ -1,13 +1,13 @@
 build:
+    @echo "Installing Roadrunner..."
+    yes | vendor/bin/rr get --location bin/
     @echo "Installing dependencies..."
     symfony composer install
 
 start:
     docker compose up -d
     docker compose ps
-    echo "Trusting certificates..."
-    symfony server:ca:install
-    symfony serve
+    bin/rr serve -c .rr.dev.yaml --debug
     
 fix:
     vendor/bin/php-cs-fixer fix --diff
