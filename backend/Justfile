@@ -1,8 +1,8 @@
 build:
-    @echo "Installing Roadrunner..."
-    yes | vendor/bin/rr get --location bin/
     @echo "Installing dependencies..."
     symfony composer install
+    @echo "Installing Roadrunner..."
+    yes | vendor/bin/rr get --location bin/
 
 start:
     docker compose up -d
