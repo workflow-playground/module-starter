@@ -17,6 +17,6 @@ static-analysis output="default":
     vendor/bin/php-cs-fixer fix --dry-run --diff
     vendor/bin/psalm {{ if output == "github" { "--output-format=github" } else { "" } }}
     
-test: static-analysis
+test:
     echo "Running tests..."
     vendor/bin/phpunit
