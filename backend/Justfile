@@ -6,15 +6,16 @@ build:
 
 start:
     docker compose up -d
+    bin/console cache:warmup
     bin/rr serve -c .rr.dev.yaml --debug
     
 fix:
     vendor/bin/php-cs-fixer fix --diff
     
-static-analysis:
+static-analysis output="default":
     vendor/bin/parallel-lint src public migrations config
     vendor/bin/php-cs-fixer fix --dry-run --diff
-    vendor/bin/psalm
+    vendor/bin/psalm {{ if output == "github" { "--output-format=github" } else { "" } }}
     
 test: static-analysis
     echo "Running tests..."
