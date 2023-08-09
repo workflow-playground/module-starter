@@ -4,8 +4,8 @@
 build:
     just backend/build
 
-develop:
-    just backend/develop
+start:
+    just backend/start
     
 fix:
     just backend/fix

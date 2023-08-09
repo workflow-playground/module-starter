@@ -2,7 +2,7 @@ build:
     @echo "Installing dependencies..."
     symfony composer install
 
-develop:
+start:
     docker compose up -d
     docker compose ps
     echo "Trusting certificates..."
