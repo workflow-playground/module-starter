@@ -1,5 +1,7 @@
 # YOUR MODULE
 
+[![Built with Devbox](https://jetpack.io/img/devbox/shield_moon.svg)](https://jetpack.io/devbox/docs/contributor-quickstart/)
+
 ## Development
 
 1. [Install devbox](https://www.jetpack.io/devbox/docs/installing_devbox/)
