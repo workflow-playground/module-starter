@@ -25,6 +25,8 @@ jobs:
       #       we should later build our own image and push it to our registry (?)
       - name: Install devbox
         uses: jetpack-io/devbox-install-action@v0.5.0
+        with:
+          enable-cache: true
       - name: Build
         run: devbox run just build
       - run: devbox run just test
