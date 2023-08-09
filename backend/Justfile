@@ -6,7 +6,6 @@ build:
 
 start:
     docker compose up -d
-    docker compose ps
     bin/rr serve -c .rr.dev.yaml --debug
     
 fix:
