@@ -7,7 +7,7 @@ build:
 start:
     docker compose up -d
     bin/console cache:warmup
-    bin/rr serve -c .rr.dev.yaml --debug
+    nohup bin/rr serve -p -c .rr.dev.yaml --debug > /tmp/rr.out &
     
 fix:
     vendor/bin/php-cs-fixer fix --diff

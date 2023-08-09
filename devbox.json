@@ -7,7 +7,9 @@
     "httpie@latest",
     "docker@latest",
     "just@latest",
-    "symfony-cli@latest"
+    "symfony-cli@latest",
+    "mysql@latest",
+    "coreutils@latest"
   ],
   "shell": {
     "init_hook": [
