@@ -3,3 +3,9 @@
 
 develop:
     just backend/develop
+    
+fix:
+    just backend/fix
+    
+test:
+    just backend/test

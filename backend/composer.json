@@ -19,6 +19,7 @@
         "symfony/yaml": "6.3.*"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.22",
         "psalm/plugin-symfony": "^5.0",
         "symfony/debug-bundle": "6.3.*",
         "symfony/stopwatch": "6.3.*",
