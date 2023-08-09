@@ -5,14 +5,18 @@ build:
 develop:
     docker compose up -d
     docker compose ps
-    @echo "Trusting certificates..."
+    echo "Trusting certificates..."
     symfony server:ca:install
     symfony serve
     
 fix:
     vendor/bin/php-cs-fixer fix --diff
     
-test:
+    
+static-analysis:
     vendor/bin/parallel-lint src public migrations config
     vendor/bin/php-cs-fixer fix --dry-run --diff
     vendor/bin/psalm
+    
+test: static-analysis
+    echo "Running tests..."
