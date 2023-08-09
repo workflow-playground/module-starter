@@ -1,4 +1,7 @@
 {
+  "env": {
+    "LC_ALL": "en_US.UTF-8"
+  },
   "packages": [
     "php@8.2",
     "php81Extensions.xdebug@latest",
@@ -9,7 +12,8 @@
     "just@latest",
     "symfony-cli@latest",
     "mysql@latest",
-    "coreutils@latest"
+    "coreutils@latest",
+    "direnv@latest"
   ],
   "shell": {
     "init_hook": [
