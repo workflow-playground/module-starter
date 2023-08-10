@@ -44,3 +44,15 @@ jobs:
       - name: Start
         run: devbox run just start && devbox run ./wait-until.sh "mysql --host=127.0.0.1 --port=23306 --database=app_test --user=test --password=test -e \"SHOW TABLES\"" 120
       - run: devbox run just backend/test
+        
+  security-check:
+    name: Security check
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install devbox
+        uses: jetpack-io/devbox-install-action@v0.5.0
+        with:
+          enable-cache: true
+      - name: Build
+        run: devbox run just backend/security-check
