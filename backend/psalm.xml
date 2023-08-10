@@ -11,6 +11,7 @@
 >
     <projectFiles>
         <directory name="src"/>
+        <directory name="config"/>
         <ignoreFiles>
             <directory name="vendor"/>
         </ignoreFiles>
