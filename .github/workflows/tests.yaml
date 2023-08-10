@@ -42,7 +42,7 @@ jobs:
       - name: Build
         run: devbox run just build
       - name: Start
-        run: devbox run just start && devbox run ./wait-until.sh "mysql --host=127.0.0.1 --port=23306 --database=app_test --user=test --password=test -e \"SHOW TABLES\"" 120
+        run: devbox run just backend/start && devbox run ./wait-until.sh "mysql --host=127.0.0.1 --port=23306 --database=app_test --user=test --password=test -e \"SHOW TABLES\"" 120
       - run: devbox run just backend/test
         
   security-check:
