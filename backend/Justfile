@@ -30,11 +30,16 @@ static-analysis output="default":
 security-check:
     symfony security:check
     
-test:
+test-unit fail-fast="false":
+    APP_ENV=test
+    XDEBUG_MODE=off # no need for coverage here
+    vendor/bin/phpunit --testsuite Unit {{ if fail-fast != "false" { "--stop-on-defect" } else { "" } }}
+    
+test fail-fast="false":
     APP_ENV=test
     @echo "Populating schema from migrations"
     bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
     @echo "Validating schema"
     bin/console doctrine:schema:validate
     @echo "Running tests..."
-    vendor/bin/phpunit
+    vendor/bin/phpunit {{ if fail-fast != "false" { "--stop-on-defect" } else { "" } }}

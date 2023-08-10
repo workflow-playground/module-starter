@@ -49,9 +49,22 @@ jobs:
       - name: Build
         run: devbox run just build
       - run: devbox run just backend/static-analysis
-        
+  
+  backend-unit-tests:
+    name: Backend Unit-Tests
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install devbox
+        uses: jetpack-io/devbox-install-action@v0.5.0
+        with:
+          enable-cache: true
+      - name: Build
+        run: devbox run just build
+      - run: devbox run just backend/test-unit fail-fast=true
+  
   backend-tests:
-    name: Backend tests
+    name: Backend test
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
@@ -63,7 +76,7 @@ jobs:
         run: devbox run just build
       - name: Start
         run: devbox run just backend/start && devbox run ./wait-until.sh "mysql --host=127.0.0.1 --port=23306 --database=app_test --user=test --password=test -e \"SHOW TABLES\"" 120
-      - run: devbox run just backend/test
+      - run: devbox run just backend/test fail-fast=true
         
   security-check:
     name: Security check
