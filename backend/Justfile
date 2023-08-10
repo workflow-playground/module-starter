@@ -14,6 +14,10 @@ fix:
     
 static-analysis output="default":
     vendor/bin/parallel-lint src public migrations config
+    composer validate composer.json --no-check-publish
+    bin/console lint:container -n {{ if output == "github" { "--format=github" } else { "" } }}
+    bin/console lint:twig templates -n {{ if output == "github" { "--format=github" } else { "" } }}
+    bin/console lint:yaml . *.yaml --parse-tags -n {{ if output == "github" { "--format=github" } else { "" } }}
     vendor/bin/php-cs-fixer fix --dry-run --diff
     vendor/bin/psalm {{ if output == "github" { "--output-format=github" } else { "" } }}
     
