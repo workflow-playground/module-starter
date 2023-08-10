@@ -11,17 +11,21 @@ start:
     nohup bin/rr serve -p -c .rr.dev.yaml --debug > /tmp/rr.out &
     
 fix:
+    vendor/bin/rector
     vendor/bin/php-cs-fixer fix --diff
     
 static-analysis output="default":
+    XDEBUG_MODE=off
     vendor/bin/parallel-lint src public migrations config
     composer validate composer.json --no-check-publish
     bin/composer-require-checker --no-interaction
     bin/console lint:container -n {{ if output == "github" { "--format=github" } else { "" } }}
     bin/console lint:twig templates -n {{ if output == "github" { "--format=github" } else { "" } }}
     bin/console lint:yaml . *.yaml --parse-tags -n {{ if output == "github" { "--format=github" } else { "" } }}
+    vendor/bin/rector --dry-run
     vendor/bin/php-cs-fixer fix --dry-run --diff
     vendor/bin/psalm {{ if output == "github" { "--output-format=github" } else { "" } }}
+    vendor/bin/phpstan
     
 security-check:
     symfony security:check
