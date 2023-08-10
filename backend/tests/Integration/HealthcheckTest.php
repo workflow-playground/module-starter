@@ -5,7 +5,7 @@ namespace App\Tests\Integration;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-final class HealthCheckTest extends WebTestCase
+final class HealthcheckTest extends WebTestCase
 {
     public function testReadiness(): void
     {
