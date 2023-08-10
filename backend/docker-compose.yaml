@@ -3,7 +3,7 @@ version: '3'
 services:
 ###> doctrine/doctrine-bundle ###
   database:
-    image: mysql:8.0-oracle
+    image: mysql:8.1-oracle
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: root
