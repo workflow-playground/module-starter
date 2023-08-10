@@ -27,5 +27,10 @@ security-check:
     symfony security:check
     
 test:
-    echo "Running tests..."
+    APP_ENV=test
+    @echo "Populating schema from migrations"
+    bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
+    @echo "Validating schema"
+    bin/console doctrine:schema:validate
+    @echo "Running tests..."
     vendor/bin/phpunit
