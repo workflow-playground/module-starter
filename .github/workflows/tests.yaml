@@ -16,7 +16,27 @@ concurrency:
   # Subject to change
   cancel-in-progress: false
   
+permissions:
+  ## see https://github.com/marketplace/actions/composer-lock-diff
+  pull-requests: write
+  contents: read
+  
 jobs:
+  comment-composer-lock-diff:
+    name: Comment composer.lock diff
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - name: Comment composer.lock diff
+        uses: WyriHaximus/github-action-composer.lock-diff@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
   static-analysis:
     name: Backend static analysis
     runs-on: ubuntu-22.04
