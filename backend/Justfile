@@ -1,6 +1,7 @@
 build:
     @echo "Installing dependencies..."
     symfony composer install
+    yes | phive install
     @echo "Installing Roadrunner..."
     yes | vendor/bin/rr get --location bin/
 
@@ -15,6 +16,7 @@ fix:
 static-analysis output="default":
     vendor/bin/parallel-lint src public migrations config
     composer validate composer.json --no-check-publish
+    bin/composer-require-checker --no-interaction
     bin/console lint:container -n {{ if output == "github" { "--format=github" } else { "" } }}
     bin/console lint:twig templates -n {{ if output == "github" { "--format=github" } else { "" } }}
     bin/console lint:yaml . *.yaml --parse-tags -n {{ if output == "github" { "--format=github" } else { "" } }}

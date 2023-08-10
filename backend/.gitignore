@@ -23,6 +23,10 @@
 /bin/rr
 ###< baldinof/roadrunner-bundle ###
 
+# Ignore all binaries installed by phive
+bin/
+!bin/console
+
 ###> symfony/phpunit-bridge ###
 .phpunit.result.cache
 /phpunit.xml
