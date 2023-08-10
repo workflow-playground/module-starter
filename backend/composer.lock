@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8ded45fe6791cf9f000f95892b26d50a",
+    "content-hash": "97fa424b96b7b4c72ab9463d5ff6f30a",
     "packages": [
         {
             "name": "baldinof/roadrunner-bundle",
@@ -9032,6 +9032,53 @@
                 }
             ],
             "time": "2023-07-19T20:17:28+00:00"
+        },
+        {
+            "name": "symplify/config-transformer",
+            "version": "12.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symplify/config-transformer.git",
+                "reference": "1b21a1ea429a378319d6313b4b024492b2f776c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symplify/config-transformer/zipball/1b21a1ea429a378319d6313b4b024492b2f776c9",
+                "reference": "1b21a1ea429a378319d6313b4b024492b2f776c9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "bin": [
+                "bin/config-transformer"
+            ],
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Prefixed version of Symfony YAML/XML to PHP/YAML config converter",
+            "support": {
+                "issues": "https://github.com/symplify/config-transformer/issues",
+                "source": "https://github.com/symplify/config-transformer/tree/12.0.5"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/rectorphp",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/tomasvotruba",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-02-22T19:32:35+00:00"
         },
         {
             "name": "theseer/tokenizer",
