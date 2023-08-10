@@ -34,6 +34,8 @@ jobs:
           fetch-depth: 0
       - name: Comment composer.lock diff
         uses: WyriHaximus/github-action-composer.lock-diff@v2
+        with:
+          workingDirectory: backend/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
