@@ -1,0 +1,13 @@
+{
+  "labels": ["dependencies", "renovate"],
+  "enabledManagers": ["ci", "dockerfile", "github-actions", "php", "nix", "helm"],
+  "packageRules": [
+    {
+      "description": "Group all dependencies from the backend directory",
+      "matchFileNames": ["backend/**"],
+      "groupName": "Backend dependencies",
+      "rangeStrategy": "bump",
+      "rebaseWhen": "behind-base-branch"
+    }
+  ]
+}
