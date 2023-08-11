@@ -70,7 +70,7 @@ jobs:
       - run: devbox run just backend/test-unit fail-fast=true
   
   backend-tests:
-    name: Backend test
+    name: Backend Tests
     runs-on: ubuntu-22.04
     timeout-minutes: 20
     steps:
