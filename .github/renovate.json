@@ -1,6 +1,5 @@
 {
   "labels": ["dependencies", "renovate"],
-  "enabledManagers": ["ci", "dockerfile", "github-actions", "php", "nix", "helm"],
   "packageRules": [
     {
       "description": "Group all dependencies from the backend directory",
