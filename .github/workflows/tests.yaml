@@ -9,6 +9,8 @@ on:
         - opened # To ensure we can have dummy env environments
         - reopened
         - synchronize # pushed commits
+    # https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue
+    merge_group:
 
 concurrency:
   group: tests-${{ github.ref }}
