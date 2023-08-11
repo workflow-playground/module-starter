@@ -11,7 +11,9 @@
     "coreutils@latest",
     "direnv@latest",
     "php82Extensions.xdebug@latest",
-    "php82Packages.phive@latest"
+    "php82Packages.phive@latest",
+    "nodejs@18",
+    "nodePackages.pnpm@8.6.0"
   ],
   "env": {
     "LC_ALL": "en_US.UTF-8"

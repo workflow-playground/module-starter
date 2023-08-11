@@ -1,0 +1,36 @@
+<div class="w-full relative divide-gray-200 rounded-lg bg-white text-center shadow p-4">
+  <div class="flex mb-5">
+    <div class="mr-5 h-full" *ngIf="thumbnail">
+      <ds-image [width]="150" [src]="thumbnail"></ds-image>
+    </div>
+
+    <div class="text-left">
+      <h1 class="text-2xl text-neutral-n500 leading-tight">{{ title }}</h1>
+      <h2 class="text-xl text-neutral-n300 p-0 mb-2 leading-tight" *ngIf="subtitle">{{ subtitle }}</h2>
+
+      <div class="flex items-center mb-2" *ngIf="authors.length > 0">
+        <span class="text-neutral-n300 mr-2">{{ 'BOOKS.DETAILS.AUTHORS' | translate }}</span>
+        <span
+          *ngFor="let author of authors"
+          class="inline-flex items-center rounded-full bg-primary-p300-main px-2 py-1 m-1 text-xs font-medium text-primary-p100 ring-1 ring-inset ring-primary-p300"
+          >{{ author }}</span
+        >
+      </div>
+
+      <div class="flex items-center mb-2" *ngIf="published">
+        <span class="text-neutral-n300 mr-2">{{ 'BOOKS.DETAILS.PUBLISHED' | translate }}</span>
+        <span class="text-neutral-n500">{{ published }}</span>
+      </div>
+
+      <div class="flex items-center mb-2" *ngIf="language">
+        <span class="text-neutral-n300 mr-2">{{ 'BOOKS.DETAILS.LANGUAGE' | translate }}</span>
+        <span class="text-neutral-n500">{{ language }}</span>
+      </div>
+    </div>
+  </div>
+  <blockquote class="text-left italic text-neutral-n500" [innerHtml]="description"></blockquote>
+  <div class="absolute top-4 right-4">
+    <ng-content></ng-content>
+  </div>
+</div>
+

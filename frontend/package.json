@@ -1,0 +1,66 @@
+{
+  "name": "angular-reference",
+  "version": "0.0.0",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": "18"
+  },
+  "scripts": {
+    "start": "ng serve",
+    "build": "ng build"
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
+  },
+  "dependencies": {
+    "@angular/animations": "16.1.6",
+    "@angular/cdk": "16.1.5",
+    "@angular/common": "16.1.6",
+    "@angular/compiler": "16.1.6",
+    "@angular/core": "16.1.6",
+    "@angular/forms": "16.1.6",
+    "@angular/material": "16.1.5",
+    "@angular/platform-browser": "16.1.6",
+    "@angular/platform-browser-dynamic": "16.1.6",
+    "@angular/platform-server": "16.1.6",
+    "@angular/router": "16.1.6",
+    "@ngrx/store": "16.2.0",
+    "@ngrx/effects": "16.2.0",
+    "@ngrx/router-store": "16.2.0",
+    "@ngrx/store-devtools": "16.2.0",
+    "@ngrx/entity": "16.2.0",
+    "@ngx-translate/core": "15.0.0",
+    "@ngx-translate/http-loader": "8.0.0",
+    "rxjs": "7.8.0",
+    "zone.js": "0.13.0",
+    "tslib": "2.6.1",
+    "@ds24/elements": "8.0.1",
+    "@ds24/utilities": "8.0.1",
+    "tailwindcss": "3.3.3",
+    "lodash-es": "4.17.21"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "16.1.5",
+    "@angular-devkit/core": "16.1.5",
+    "@angular-devkit/schematics": "16.1.5",
+    "@angular-eslint/builder": "16.1.0",
+    "@angular-eslint/eslint-plugin": "16.1.0",
+    "@angular-eslint/eslint-plugin-template": "16.1.0",
+    "@angular-eslint/schematics": "16.1.0",
+    "@angular-eslint/template-parser": "16.1.0",
+    "@angular/cli": "16.1.0",
+    "@angular/compiler-cli": "16.1.6",
+    "@angular/language-service": "16.1.6",
+    "typescript": "5.1.6",
+    "@nx/linter": "16.6.0",
+    "@nx/jest": "16.6.0",
+    "husky": "8.0.3",
+    "postcss": "8.4.27",
+    "autoprefixer": "10.4.14",
+    "@fontsource/roboto": "5.0.8",
+    "@types/lodash-es": "4.17.8"
+  }
+}

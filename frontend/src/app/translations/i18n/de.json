@@ -1,0 +1,39 @@
+{
+  "LOGIN": {
+    "USERNAME": { "LABEL": "Nutzername", "PLACEHOLDER": "Nutzername" },
+    "PASSWORD": { "LABEL": "Passwort", "PLACEHOLDER": "Passwort", "HINT": "Hinweis: Standard ist ngrx" },
+    "SIGN_IN": "Anmelden"
+  },
+  "BOOKS": {
+    "DETAILS": {
+      "AUTHORS": "Autoren:",
+      "PUBLISHED": "Veröffentlichung:",
+      "LANGUAGE": "Sprache:"
+    },
+    "SEARCH": {
+      "PLACEHOLDER": "Bücher suchen"
+    },
+    "COLLECTION": {
+      "SHOW_DETAILS": "Details anzeigen"
+    }
+  },
+  "404": {
+    "TITLE": "404: Seiten nicht gefunden",
+    "DESCRIPTION": "Hey! Sieht so aus als ob die Seite noch nicht existiert.",
+    "ACTION": "Bring mich zur Startseite!"
+  },
+  "FEATURES": {
+    "LOGOUT": {
+      "TITLE": "Abmelden",
+      "CANCEL": "Abbrechen",
+      "DESCRIPTION": "Bist du dir sicher das du dich abmelden möchtest?",
+      "OK": "Ok"
+    },
+    "SIDENAV": {
+      "MY_COLLECTION": "Meine Sammlung",
+      "BROWSE_BOOKS": "Bücher suchen",
+      "SIGN_IN": "Anmelden",
+      "SIGN_OUT": "Abmelden"
+    }
+  }
+}

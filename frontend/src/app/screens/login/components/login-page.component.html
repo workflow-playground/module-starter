@@ -1,0 +1,31 @@
+<div class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
+  </div>
+
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <form class="space-y-6" [formGroup]="form" (ngSubmit)="submit()">
+      <ds-input-wrapper>
+        <input
+          dsInput
+          formControlName="input"
+          type="text"
+          [placeholder]="'LOGIN.USERNAME.PLACEHOLDER' | translate"
+          formControlName="username"
+        />
+        <ds-form-label>{{ 'LOGIN.USERNAME.LABEL' | translate }}</ds-form-label>
+      </ds-input-wrapper>
+      <ds-input-wrapper>
+        <input dsInput formControlName="input" type="password" formControlName="password" />
+        <ds-form-label>{{ 'LOGIN.PASSWORD.LABEL' | translate }}</ds-form-label>
+        <ds-form-sub-text>{{ 'LOGIN.PASSWORD.HINT' | translate }}</ds-form-sub-text>
+      </ds-input-wrapper>
+      <div>
+        <button class="flex w-full justify-center rounded-md" dsButton="primary" type="submit">{{ 'LOGIN.SIGN_IN' | translate }}</button>
+      </div>
+      <div class="w-full text-center">
+        <ds-form-error *ngIf="error$ | async as errorMessage">{{ errorMessage }}</ds-form-error>
+      </div>
+    </form>
+  </div>
+</div>

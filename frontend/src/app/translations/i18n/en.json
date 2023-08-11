@@ -1,0 +1,39 @@
+{
+  "LOGIN": {
+    "USERNAME": { "LABEL": "Username", "PLACEHOLDER": "Username" },
+    "PASSWORD": { "LABEL": "Password", "PLACEHOLDER": "Password", "HINT": "Hint: default is ngrx" },
+    "SIGN_IN": "Sign In"
+  },
+  "BOOKS": {
+    "DETAILS": {
+      "AUTHORS": "Authors:",
+      "PUBLISHED": "Published:",
+      "LANGUAGE": "Language:"
+    },
+    "SEARCH": {
+      "PLACEHOLDER": "Find a Book"
+    },
+    "COLLECTION": {
+      "SHOW_DETAILS": "View Details"
+    }
+  },
+  "404": {
+    "TITLE": "404: Not Found",
+    "DESCRIPTION": "Hey! It looks like this page doesn't exist yet.",
+    "ACTION": "Take Me Home"
+  },
+  "FEATURES": {
+    "LOGOUT": {
+      "TITLE": "Logout",
+      "CANCEL": "Cancel",
+      "DESCRIPTION": "Are you sure you want to logout?",
+      "OK": "Ok"
+    },
+    "SIDENAV": {
+      "MY_COLLECTION": "My Collection",
+      "BROWSE_BOOKS": "Browse Books",
+      "SIGN_IN": "Sign In",
+      "SIGN_OUT": "Sign Out"
+    }
+  }
+}

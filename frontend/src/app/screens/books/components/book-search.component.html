@@ -1,0 +1,15 @@
+<div class="relative rounded-md shadow-sm mb-5">
+  <input
+    type="text"
+    [value]="query"
+    (keyup)="onSearch($event)"
+    class="block text-base w-full rounded-md border-0 py-2 pl-2 pr-10 text-neutral-n500 ring-1 ring-inset ring-neutral-n200 placeholder:text-base placeholder:text-neutral-n300 focus:ring-2 focus:ring-inset focus:ring-primary-p300-main sm:text-sm sm:leading-6"
+    [placeholder]="'BOOKS.SEARCH.PLACEHOLDER' | translate"
+  />
+  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+    <ds-icon *ngIf="!searching" [name]="icons.MagnifyingGlass" [size]="20" [color]="iconColors.Neutral200"></ds-icon>
+    <ds-loader *ngIf="searching" size="small"></ds-loader>
+  </div>
+
+</div>
+<div class="text-danger-e500" *ngIf="error">{{ error }}</div>
