@@ -12,12 +12,18 @@ start:
     bin/console cache:warmup
     nohup bin/rr serve -p -c .rr.dev.yaml --debug > /tmp/rr.out &
     
+stop:
+    bin/rr stop
+    docker compose stop
+
 fix:
+    vendor/bin/config-transformer config
     vendor/bin/rector
     vendor/bin/php-cs-fixer fix --diff
     
 static-analysis output="default":
     XDEBUG_MODE=off
+    vendor/bin/config-transformer config --dry-run
     vendor/bin/parallel-lint src public migrations config
     composer validate composer.json --no-check-publish
     bin/composer-require-checker --no-interaction

@@ -21,7 +21,7 @@
   "shell": {
     "init_hook": [
       "git config --global push.autoSetupRemote true",
-      "git config pull.rebase true"
+      "git config --global pull.rebase true"
     ],
     "scripts": {
       "test": [

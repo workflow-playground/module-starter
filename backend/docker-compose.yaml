@@ -25,10 +25,21 @@ services:
       - '26379:6379' # redis stack
       - '28001:8001' # redis insight
     volumes:
-      - redis:/data
+      - redis_data:/data
 
+  rabbitmq:
+    image: rabbitmq:3.10-management
+    ports:
+      - '25672:5672' # rabbitmq
+      - '15672:15672' # rabbitmq management
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq/mnesia/rabbit@app-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: pass
 volumes:
-  redis:
+  redis_data:
+  rabbitmq_data:
 ###> doctrine/doctrine-bundle ###
   database_data:
 ###< doctrine/doctrine-bundle ###
