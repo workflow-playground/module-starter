@@ -39,9 +39,7 @@ describe('Service: GoogleBooks', () => {
     http.get = jest.fn(() => response);
 
     expect(service.searchBooks(queryTitle)).toBeObservable(expected);
-    expect(http.get).toHaveBeenCalledWith(
-      `https://www.googleapis.com/books/v1/volumes?orderBy=newest&q=${queryTitle}`
-    );
+    expect(http.get).toHaveBeenCalledWith(`https://www.googleapis.com/books/v1/volumes?orderBy=newest&q=${queryTitle}`);
   });
 
   it('should retrieve the book from the volumeId', () => {
@@ -50,8 +48,6 @@ describe('Service: GoogleBooks', () => {
     http.get = jest.fn(() => response);
 
     expect(service.retrieveBook(data.volumeId)).toBeObservable(expected);
-    expect(http.get).toHaveBeenCalledWith(
-      `https://www.googleapis.com/books/v1/volumes/${data.volumeId}`
-    );
+    expect(http.get).toHaveBeenCalledWith(`https://www.googleapis.com/books/v1/volumes/${data.volumeId}`);
   });
 });

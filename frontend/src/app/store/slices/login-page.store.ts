@@ -6,7 +6,7 @@ export const featureKey = 'loginPage';
 
 export const actions = {
   login: createAction('[Login Page] Login', props<{ credentials: Credentials }>()),
-}
+};
 
 export interface State {
   error: string | null;
@@ -20,13 +20,13 @@ export const initialState: State = {
 
 export const reducer = createReducer(
   initialState,
-  on(actions.login, (state) => ({
+  on(actions.login, state => ({
     ...state,
     error: null,
     pending: true,
   })),
 
-  on(authActions.loginSuccess, (state) => ({
+  on(authActions.loginSuccess, state => ({
     ...state,
     error: null,
     pending: false,
@@ -36,19 +36,13 @@ export const reducer = createReducer(
     ...state,
     error,
     pending: false,
-  }))
+  })),
 );
 
 // Selectors
 export const selectSlice = createFeatureSelector<State>(featureKey);
 
 export const selectors = {
-  selectLoginPageError: createSelector(
-    selectSlice,
-    (state: State) => state.error
-  ),
-  selectLoginPagePending: createSelector(
-    selectSlice,
-    (state: State) => state.pending
-  )
+  selectLoginPageError: createSelector(selectSlice, (state: State) => state.error),
+  selectLoginPagePending: createSelector(selectSlice, (state: State) => state.pending),
 };

@@ -4,7 +4,7 @@ import { IconColor, IconName } from '@ds24/elements';
 @Component({
   selector: 'ds-nav-item',
   templateUrl: './nav-item.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavItemComponent {
   @Input() icon: IconName | null = null;

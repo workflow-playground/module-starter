@@ -20,7 +20,7 @@ export const COMPONENTS = [
   BookCardComponent,
   CollectionPageComponent,
   BookDetailsPageComponent,
-  FindBookPageComponent
+  FindBookPageComponent,
 ];
 
 @NgModule({
@@ -31,7 +31,7 @@ export const COMPONENTS = [
     ImageModule,
     IconModule,
     LoaderModule,
-    TranslateModule.forChild()
+    TranslateModule.forChild(),
   ],
   declarations: COMPONENTS,
 })

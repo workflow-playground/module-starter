@@ -54,9 +54,7 @@ export const reducer = createReducer(
    * the collection is to be sorted, the adapter will
    * sort each record upon entry into the sorted array.
    */
-  on(searchActions.searchSuccess, (state, { books }) =>
-    adapter.addMany(books, state)
-  ),
+  on(searchActions.searchSuccess, (state, { books }) => adapter.addMany(books, state)),
   /**
    * The addOne function provided by the created adapter
    * adds one record to the entity dictionary
@@ -68,7 +66,7 @@ export const reducer = createReducer(
   on(actions.selectBook, (state, { id }) => ({
     ...state,
     selectedBookId: id,
-  }))
+  })),
 );
 
 /**
@@ -120,7 +118,7 @@ export const selectors = {
   selectSelectedBook: createSelector(
     selectBookEntities,
     selectId,
-    (entities, selectedId) => selectedId && entities[selectedId]
+    (entities, selectedId) => selectedId && entities[selectedId],
   ),
   selectSearchResults: createSelector(selectBookEntities, searchSelectors.selectSearchBookIds, (books, searchIds) => {
     return searchIds.map(id => books[id]).filter((book): book is Book => book != null);

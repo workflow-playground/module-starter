@@ -6,12 +6,4 @@ import { actions as layout } from './slices/layout.store';
 import { actions as loginPage } from './slices/login-page.store';
 import { actions as user } from './slices/user.store';
 
-export {
-  books,
-  collection,
-  search,
-  auth,
-  loginPage,
-  layout,
-  user
-}
+export { books, collection, search, auth, loginPage, layout, user };

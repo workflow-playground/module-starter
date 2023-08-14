@@ -7,19 +7,16 @@ export const routes: Routes = [
   { path: '', redirectTo: '/books', pathMatch: 'full' },
   {
     path: 'books',
-    loadChildren: () =>
-      import('../screens/books/books.module').then((m) => m.BooksScreenModule),
+    loadChildren: () => import('../screens/books/books.module').then(m => m.BooksScreenModule),
     canActivate: [authGuard],
   },
   {
     path: 'login',
-    loadChildren: () =>
-      import('../screens/login/login.module').then((m) => m.LoginScreenModule)
+    loadChildren: () => import('../screens/login/login.module').then(m => m.LoginScreenModule),
   },
   {
     path: '**',
-    loadChildren: () =>
-      import('../screens/not-found/not-found.module').then((m) => m.NotFoundScreenModule)
+    loadChildren: () => import('../screens/not-found/not-found.module').then(m => m.NotFoundScreenModule),
   },
 ];
 

@@ -10,7 +10,7 @@ export const authGuard = (): Observable<boolean> => {
   const store = inject(Store);
 
   return store.select(selectors.auth.selectLoggedIn).pipe(
-    map((authed) => {
+    map(authed => {
       if (!authed) {
         store.dispatch(actions.auth.loginRedirect());
         return false;
@@ -18,6 +18,6 @@ export const authGuard = (): Observable<boolean> => {
 
       return true;
     }),
-    take(1)
+    take(1),
   );
 };

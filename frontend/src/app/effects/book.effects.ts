@@ -37,18 +37,21 @@ export class BookEffects {
             return this.googleBooks.searchBooks(query).pipe(
               takeUntil(nextSearch$),
               map((books: Book[]) => actions.search.searchSuccess({ books })),
-              catchError(err => of(actions.search.searchFailure({ errorMsg: err.message })))
+              catchError(err => of(actions.search.searchFailure({ errorMsg: err.message }))),
             );
-          })
-        )
+          }),
+        ),
   );
 
   success$ = createEffect(() =>
     this.actions$.pipe(
       ofType(actions.collection.loadBooksSuccess),
-      map((payload) => actions.search.searchSuccess(payload))
-    )
+      map(payload => actions.search.searchSuccess(payload)),
+    ),
   );
 
-  constructor(private actions$: Actions, private googleBooks: GoogleBooksService) {}
+  constructor(
+    private actions$: Actions,
+    private googleBooks: GoogleBooksService,
+  ) {}
 }

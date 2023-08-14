@@ -42,7 +42,7 @@ import { rootReducers, metaReducers } from './reducers';
     StoreDevtoolsModule.instrument({
       name: 'NgRx Book Store App',
       // In a production build you would want to disable the Store Devtools
-      logOnly: !isDevMode()
+      logOnly: !isDevMode(),
     }),
   ],
 })

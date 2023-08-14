@@ -21,7 +21,9 @@
         <ds-form-sub-text>{{ 'LOGIN.PASSWORD.HINT' | translate }}</ds-form-sub-text>
       </ds-input-wrapper>
       <div>
-        <button class="flex w-full justify-center rounded-md" dsButton="primary" type="submit">{{ 'LOGIN.SIGN_IN' | translate }}</button>
+        <button class="flex w-full justify-center rounded-md" dsButton="primary" type="submit">
+          {{ 'LOGIN.SIGN_IN' | translate }}
+        </button>
       </div>
       <div class="w-full text-center">
         <ds-form-error *ngIf="error$ | async as errorMessage">{{ errorMessage }}</ds-form-error>

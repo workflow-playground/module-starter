@@ -1,5 +1,5 @@
-import { reducer, actions, initialState, State } from "./auth.store";
-import { User } from "../../types/user.types";
+import { reducer, actions, initialState, State } from './auth.store';
+import { User } from '../../types/user.types';
 
 describe('AuthReducer', () => {
   describe('undefined action', () => {

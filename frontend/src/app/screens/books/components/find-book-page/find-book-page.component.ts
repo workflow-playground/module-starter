@@ -11,7 +11,7 @@ import { Book } from '../../../../types/book.types';
 @Component({
   selector: 'ds-find-book-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './find-book-page.component.html'
+  templateUrl: './find-book-page.component.html',
 })
 export class FindBookPageComponent {
   icons: typeof IconName = IconName;

@@ -9,9 +9,7 @@ import { LoginPageComponent } from './components/login-page.component';
 
 export const COMPONENTS = [LoginPageComponent];
 
-const routes: Routes = [
-  { path: '', component: LoginPageComponent, data: { title: 'Login', page: 'login' } },
-];
+const routes: Routes = [{ path: '', component: LoginPageComponent, data: { title: 'Login', page: 'login' } }];
 
 @NgModule({
   imports: [
@@ -20,7 +18,7 @@ const routes: Routes = [
     DsFormsModule,
     ButtonModule,
     RouterModule.forChild(routes),
-    TranslateModule.forChild()
+    TranslateModule.forChild(),
   ],
   declarations: COMPONENTS,
 })

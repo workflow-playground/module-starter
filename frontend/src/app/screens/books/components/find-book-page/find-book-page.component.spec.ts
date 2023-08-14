@@ -21,13 +21,7 @@ describe('Find Book Page', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        IconModule,
-        ReactiveFormsModule,
-        TranslateModule.forRoot(),
-        ImageModule,
-        LoaderModule
-      ],
+      imports: [IconModule, ReactiveFormsModule, TranslateModule.forRoot(), ImageModule, LoaderModule],
       declarations: [
         BookDetailsComponent,
         BookSearchComponent,
