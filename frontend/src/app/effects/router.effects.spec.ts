@@ -7,8 +7,8 @@ import { Actions } from '@ngrx/effects';
 import { routerNavigatedAction } from '@ngrx/router-store';
 import { provideMockStore } from '@ngrx/store/testing';
 
-import { RouterEffects } from '@example-app/core/effects';
-import * as fromRoot from '@example-app/reducers';
+import { RouterEffects } from './router.effects';
+import { selectors } from '../store';
 
 describe('RouterEffects', () => {
   let effects: RouterEffects;
@@ -24,7 +24,7 @@ describe('RouterEffects', () => {
         },
         provideMockStore({
           selectors: [
-            { selector: fromRoot.selectRouteData, value: { title: 'Search' } },
+            { selector: selectors.router.selectRouteData, value: { title: 'Search' } },
           ],
         }),
         { provide: Title, useValue: { setTitle: jest.fn() } },
@@ -39,7 +39,7 @@ describe('RouterEffects', () => {
     it('should update the title on router navigation', () => {
       effects.updateTitle$.subscribe();
       expect(titleService.setTitle).toHaveBeenCalledWith(
-        'Book Collection - Search'
+        'DS24 Application Reference - Search'
       );
     });
   });

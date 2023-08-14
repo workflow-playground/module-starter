@@ -2,16 +2,14 @@ import { TestBed } from '@angular/core/testing';
 
 import { Actions } from '@ngrx/effects';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { cold, getTestScheduler, hot } from 'jasmine-marbles';
+import { cold, hot, getTestScheduler } from 'jasmine-marbles';
+
 import { Observable } from 'rxjs';
 
-import {
-  BooksApiActions,
-  FindBookPageActions,
-} from '@example-app/books/actions';
-import { BookEffects } from '@example-app/books/effects';
-import { Book } from '@example-app/books/models';
-import { GoogleBooksService } from '@example-app/core/services';
+import { BookEffects } from './book.effects';
+import { GoogleBooksService } from '../services/google-books.service';
+import { Book } from '../types/book.types';
+import { actions } from '../store';
 
 describe('BookEffects', () => {
   let effects: BookEffects;
@@ -40,8 +38,8 @@ describe('BookEffects', () => {
       const book1 = { id: '111', volumeInfo: {} } as Book;
       const book2 = { id: '222', volumeInfo: {} } as Book;
       const books = [book1, book2];
-      const action = FindBookPageActions.searchBooks({ query: 'query' });
-      const completion = BooksApiActions.searchSuccess({ books });
+      const action = actions.search.searchBooks({ query: 'query' });
+      const completion = actions.search.searchSuccess({ books });
 
       actions$ = hot('-a---', { a: action });
       const response = cold('-a|', { a: books });
@@ -51,14 +49,14 @@ describe('BookEffects', () => {
       expect(
         effects.search$({
           debounce: 30,
-          scheduler: getTestScheduler(),
+          scheduler: getTestScheduler()
         })
       ).toBeObservable(expected);
     });
 
     it('should return a book.SearchError if the books service throws', () => {
-      const action = FindBookPageActions.searchBooks({ query: 'query' });
-      const completion = BooksApiActions.searchFailure({
+      const action = actions.search.searchBooks({ query: 'query' });
+      const completion = actions.search.searchFailure({
         errorMsg: 'Unexpected Error. Try again later.',
       });
       const error = { message: 'Unexpected Error. Try again later.' };
@@ -71,13 +69,13 @@ describe('BookEffects', () => {
       expect(
         effects.search$({
           debounce: 30,
-          scheduler: getTestScheduler(),
+          scheduler: getTestScheduler()
         })
       ).toBeObservable(expected);
     });
 
     it(`should not do anything if the query is an empty string`, () => {
-      const action = FindBookPageActions.searchBooks({ query: '' });
+      const action = actions.search.searchBooks({ query: '' });
 
       actions$ = hot('-a---', { a: action });
       const expected = cold('---');
@@ -85,7 +83,7 @@ describe('BookEffects', () => {
       expect(
         effects.search$({
           debounce: 30,
-          scheduler: getTestScheduler(),
+          scheduler: getTestScheduler()
         })
       ).toBeObservable(expected);
     });

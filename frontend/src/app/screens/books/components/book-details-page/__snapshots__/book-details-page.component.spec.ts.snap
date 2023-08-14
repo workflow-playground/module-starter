@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Book Details Page should compile 1`] = `
+<ds-book-details-page
+  book$={[Function _Store]}
+  iconColors={[Function Object]}
+  icons={[Function Object]}
+  isSelectedBookInCollection$={[Function _Store]}
+  store={[Function _MockStore]}
+>
+  <ds-book-details>
+    <div
+      class="w-full relative divide-gray-200 rounded-lg bg-white text-center shadow p-4"
+    >
+      <div
+        class="flex mb-5"
+      >
+        <div
+          class="text-left"
+        >
+          <h1
+            class="text-2xl text-neutral-n500 leading-tight"
+          >
+          </h1>
+        </div>
+      </div>
+      <blockquote
+        class="text-left italic text-neutral-n500"
+      />
+      <div
+        class="absolute top-4 right-4"
+      >
+        <button
+          class="w-8 h-8 flex items-center justify-center rounded shadow bg-primary-p300-main"
+        >
+          <ds-icon>
+            <save-icon>
+              <svg
+                fill="none"
+                height="20px"
+                style="height: 20px; width: 20px;"
+                viewBox="0 0 24 24"
+                width="20px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  class="fill-white"
+                  clip-rule="evenodd"
+                  d="M17.3846 2H2V22H22V6.76923L17.3846 2ZM14.7846 3.53846V8.15385H7.44615V3.53846H14.7846ZM20.4615 20.4615H3.53846V3.53846H5.90769V9.69231H16.3231V3.53846H16.7231L20.4615 7.38462V20.4615ZM15.8462 14.8999H5.78467V16.4384H15.8462V14.8999ZM5.78467 17.2693H15.8462V18.8077H5.78467V17.2693Z"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </save-icon>
+          </ds-icon>
+        </button>
+      </div>
+    </div>
+  </ds-book-details>
+</ds-book-details-page>
+`;

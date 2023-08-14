@@ -1,8 +1,5 @@
-import { reducer } from '@example-app/auth/reducers/auth.reducer';
-import * as fromAuth from '@example-app/auth/reducers/auth.reducer';
-import { AuthApiActions, AuthActions } from '@example-app/auth/actions';
-
-import { User } from '@example-app/auth/models';
+import { reducer, actions, initialState, State } from "./auth.store";
+import { User } from "../../types/user.types";
 
 describe('AuthReducer', () => {
   describe('undefined action', () => {
@@ -25,9 +22,9 @@ describe('AuthReducer', () => {
   describe('LOGIN_SUCCESS', () => {
     it('should add a user set loggedIn to true in auth state', () => {
       const user = { name: 'test' } as User;
-      const createAction = AuthApiActions.loginSuccess({ user });
+      const createAction = actions.loginSuccess({ user });
 
-      const result = reducer(fromAuth.initialState, createAction);
+      const result = reducer(initialState, createAction);
 
       expect(result).toMatchSnapshot();
     });
@@ -37,8 +34,8 @@ describe('AuthReducer', () => {
     it('should logout a user', () => {
       const initialState = {
         user: { name: 'test' },
-      } as fromAuth.State;
-      const createAction = AuthActions.logout();
+      } as State;
+      const createAction = actions.logout();
 
       const result = reducer(initialState, createAction);
 

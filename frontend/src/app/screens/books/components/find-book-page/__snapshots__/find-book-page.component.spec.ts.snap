@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Find Book Page should compile 1`] = `
+<ds-find-book-page
+  books$={[Function _Store]}
+  error$={[Function _Store]}
+  iconColors={[Function Object]}
+  icons={[Function Object]}
+  loading$={[Function _Store]}
+  searchQuery$={[Function _Store]}
+  store={[Function _MockStore]}
+>
+  <ds-book-search>
+    <div
+      class="relative rounded-md shadow-sm mb-5"
+    >
+      <input
+        class="block text-base w-full rounded-md border-0 py-2 pl-2 pr-10 text-neutral-n500 ring-1 ring-inset ring-neutral-n200 placeholder:text-base placeholder:text-neutral-n300 focus:ring-2 focus:ring-inset focus:ring-primary-p300-main sm:text-sm sm:leading-6"
+        placeholder="BOOKS.SEARCH.PLACEHOLDER"
+        type="text"
+      />
+      <div
+        class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+      >
+        <ds-icon>
+          <magnifying-glass>
+            <svg
+              fill="none"
+              height="20px"
+              style="height: 20px; width: 20px;"
+              viewBox="0 0 40 40"
+              width="20px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                class="fill-neutral-n200"
+                clip-rule="evenodd"
+                d="M8.29142 27.8438C3.21107 25.4221 -0.0176564 20.2883 0.000121082 14.6603C-0.0259332 8.2324 4.15507 2.54368 10.2976 0.64945C16.4401 -1.24478 23.0988 1.10118 26.6975 6.42736C30.2962 11.7535 29.988 18.8067 25.9386 23.7988L39.5694 37.368L37.354 39.5834L23.754 25.9834C19.3931 29.5411 13.3718 30.2656 8.29142 27.8438ZM14.6155 26.1988C20.988 26.1988 26.154 21.0328 26.154 14.6603C26.1622 11.5976 24.9491 8.65798 22.7835 6.49232C20.6178 4.32666 17.6782 3.11364 14.6155 3.12184C8.24299 3.12184 3.07704 8.28778 3.07704 14.6603C3.07704 21.0328 8.24299 26.1988 14.6155 26.1988Z"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </magnifying-glass>
+        </ds-icon>
+      </div>
+    </div>
+  </ds-book-search><ul
+    class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3"
+    role="list"
+  >
+  </ul>
+</ds-find-book-page>
+`;

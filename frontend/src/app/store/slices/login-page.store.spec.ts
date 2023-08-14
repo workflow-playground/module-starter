@@ -1,9 +1,6 @@
-import { reducer } from '@example-app/auth/reducers/login-page.reducer';
-import * as fromLoginPage from '@example-app/auth/reducers/login-page.reducer';
-
-import { AuthApiActions, LoginPageActions } from '@example-app/auth/actions';
-
-import { Credentials, User } from '@example-app/auth/models';
+import { Credentials, User } from "../../types/user.types";
+import { reducer, actions, initialState } from "./login-page.store";
+import * as authStore from "./auth.store";
 
 describe('LoginPageReducer', () => {
   describe('undefined action', () => {
@@ -19,9 +16,9 @@ describe('LoginPageReducer', () => {
   describe('LOGIN', () => {
     it('should make pending to true', () => {
       const user = { username: 'test' } as Credentials;
-      const createAction = LoginPageActions.login({ credentials: user });
+      const createAction = actions.login({ credentials: user });
 
-      const result = reducer(fromLoginPage.initialState, createAction);
+      const result = reducer(initialState, createAction);
 
       expect(result).toMatchSnapshot();
     });
@@ -30,9 +27,9 @@ describe('LoginPageReducer', () => {
   describe('LOGIN_SUCCESS', () => {
     it('should have no error and no pending state', () => {
       const user = { name: 'test' } as User;
-      const createAction = AuthApiActions.loginSuccess({ user });
+      const createAction = authStore.actions.loginSuccess({ user });
 
-      const result = reducer(fromLoginPage.initialState, createAction);
+      const result = reducer(initialState, createAction);
 
       expect(result).toMatchSnapshot();
     });
@@ -41,9 +38,9 @@ describe('LoginPageReducer', () => {
   describe('LOGIN_FAILURE', () => {
     it('should have an error and no pending state', () => {
       const error = 'login failed';
-      const createAction = AuthApiActions.loginFailure({ error });
+      const createAction = authStore.actions.loginFailure({ error });
 
-      const result = reducer(fromLoginPage.initialState, createAction);
+      const result = reducer(initialState, createAction);
 
       expect(result).toMatchSnapshot();
     });

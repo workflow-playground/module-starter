@@ -1,18 +1,13 @@
-import { reducer } from '@example-app/books/reducers/books.reducer';
-import * as fromBooks from '@example-app/books/reducers/books.reducer';
-import {
-  BooksApiActions,
-  BookActions,
-  ViewBookPageActions,
-  CollectionApiActions,
-} from '@example-app/books/actions';
-import { Book, generateMockBook } from '@example-app/books/models';
+import { reducer, State, actions } from './books.store';
+import * as searchStore from './search.store';
+import { Book } from '../../types/book.types';
+import { bookMock } from '../../types/book.types.mock';
 
 describe('BooksReducer', () => {
-  const book1 = generateMockBook();
+  const book1 = bookMock;
   const book2 = { ...book1, id: '222' };
   const book3 = { ...book1, id: '333' };
-  const initialState: fromBooks.State = {
+  const initialState: State = {
     ids: [book1.id, book2.id],
     entities: {
       [book1.id]: book1,
@@ -30,14 +25,8 @@ describe('BooksReducer', () => {
   });
 
   describe('SEARCH_COMPLETE & LOAD_SUCCESS', () => {
-    type BooksActions =
-      | typeof BooksApiActions.searchSuccess
-      | typeof CollectionApiActions.loadBooksSuccess;
-    function noExistingBooks(
-      action: BooksActions,
-      booksInitialState: any,
-      books: Book[]
-    ) {
+    type BooksActions = typeof searchStore.actions.searchSuccess;
+    function noExistingBooks(action: BooksActions, booksInitialState: any, books: Book[]) {
       const createAction = action({ books });
 
       const result = reducer(booksInitialState, createAction);
@@ -45,11 +34,7 @@ describe('BooksReducer', () => {
       expect(result).toMatchSnapshot();
     }
 
-    function existingBooks(
-      action: BooksActions,
-      booksInitialState: any,
-      books: Book[]
-    ) {
+    function existingBooks(action: BooksActions, booksInitialState: any, books: Book[]) {
       // should not replace existing books
       const differentBook2 = { ...books[0], foo: 'bar' };
       const createAction = action({ books: [books[1], differentBook2] });
@@ -60,27 +45,11 @@ describe('BooksReducer', () => {
     }
 
     it('should add all books in the payload when none exist', () => {
-      noExistingBooks(BooksApiActions.searchSuccess, initialState, [
-        book1,
-        book2,
-      ]);
-
-      noExistingBooks(CollectionApiActions.loadBooksSuccess, initialState, [
-        book1,
-        book2,
-      ]);
+      noExistingBooks(searchStore.actions.searchSuccess, initialState, [book1, book2]);
     });
 
     it('should add only books when books already exist', () => {
-      existingBooks(BooksApiActions.searchSuccess, initialState, [
-        book2,
-        book3,
-      ]);
-
-      existingBooks(CollectionApiActions.loadBooksSuccess, initialState, [
-        book2,
-        book3,
-      ]);
+      existingBooks(searchStore.actions.searchSuccess, initialState, [book2, book3]);
     });
   });
 
@@ -94,15 +63,15 @@ describe('BooksReducer', () => {
     };
 
     it('should add a single book, if the book does not exist', () => {
-      const action = BookActions.loadBook({ book: book1 });
+      const action = actions.loadBook({ book: book1 });
 
-      const result = reducer(fromBooks.initialState, action);
+      const result = reducer(initialState, action);
 
       expect(result).toMatchSnapshot();
     });
 
     it('should return the existing state if the book exists', () => {
-      const action = BookActions.loadBook({ book: book1 });
+      const action = actions.loadBook({ book: book1 });
 
       const result = reducer(expectedResult, action);
 
@@ -112,24 +81,11 @@ describe('BooksReducer', () => {
 
   describe('SELECT', () => {
     it('should set the selected book id on the state', () => {
-      const action = ViewBookPageActions.selectBook({ id: book1.id });
+      const action = actions.selectBook({ id: book1.id });
 
       const result = reducer(initialState, action);
 
       expect(result).toMatchSnapshot();
-    });
-  });
-
-  describe('Selectors', () => {
-    describe('selectId', () => {
-      it('should return the selected id', () => {
-        const result = fromBooks.selectId({
-          ...initialState,
-          selectedBookId: book1.id,
-        });
-
-        expect(result).toMatchSnapshot();
-      });
     });
   });
 });

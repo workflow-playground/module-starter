@@ -1,4 +1,4 @@
-import { AddCommasPipe } from '@example-app/shared/pipes/add-commas.pipe';
+import { AddCommasPipe } from './add-commas.pipe';
 
 describe('Pipe: Add Commas', () => {
   let pipe: AddCommasPipe;
@@ -16,9 +16,7 @@ describe('Pipe: Add Commas', () => {
   });
 
   it('should transform ["Kim", "Ryan", "Amanda"] to "Kim, Ryan, and Amanda"', () => {
-    expect(pipe.transform(['Kim', 'Ryan', 'Amanda'])).toEqual(
-      'Kim, Ryan, and Amanda'
-    );
+    expect(pipe.transform(['Kim', 'Ryan', 'Amanda'])).toEqual('Kim, Ryan, and Amanda');
   });
 
   it('transforms undefined to "Author Unknown"', () => {
