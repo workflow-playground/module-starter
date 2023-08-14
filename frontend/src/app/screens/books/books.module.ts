@@ -1,4 +1,4 @@
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { IconModule, ImageModule, LoaderModule } from '@ds24/elements';
 import { TranslateModule } from '@ngx-translate/core';
@@ -28,6 +28,7 @@ export const COMPONENTS = [
     AsyncPipe,
     NgFor,
     NgIf,
+    NgClass,
     BooksRoutingModule,
     PipesModule,
     ImageModule,
