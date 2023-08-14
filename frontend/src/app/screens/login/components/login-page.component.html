@@ -12,16 +12,17 @@
           type="text"
           [placeholder]="'LOGIN.USERNAME.PLACEHOLDER' | translate"
           formControlName="username"
+          data-test="login-username"
         />
         <ds-form-label>{{ 'LOGIN.USERNAME.LABEL' | translate }}</ds-form-label>
       </ds-input-wrapper>
       <ds-input-wrapper>
-        <input dsInput formControlName="input" type="password" formControlName="password" />
+        <input dsInput formControlName="input" type="password" formControlName="password" data-test="login-password" />
         <ds-form-label>{{ 'LOGIN.PASSWORD.LABEL' | translate }}</ds-form-label>
         <ds-form-sub-text>{{ 'LOGIN.PASSWORD.HINT' | translate }}</ds-form-sub-text>
       </ds-input-wrapper>
       <div>
-        <button class="flex w-full justify-center rounded-md" dsButton="primary" type="submit">
+        <button data-test="login-submit" class="flex w-full justify-center rounded-md" dsButton="primary" type="submit">
           {{ 'LOGIN.SIGN_IN' | translate }}
         </button>
       </div>
