@@ -2,6 +2,7 @@
 # Just is inspired by makefile syntay but avoids some ot its [caveats](https://just.systems/man/en/chapter_75.html). 
 
 install:
+    just e2e/install
     just frontend/install
 
 build:
@@ -22,3 +23,6 @@ lint:
 test:
     just backend/test
     just frontend/test
+
+e2e:
+    just e2e/test

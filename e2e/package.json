@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "cypress open"
+    "start": "cypress open",
+    "test": "cypress run"
   },
   "dependencies": {
     "cypress": "12.17.3"
