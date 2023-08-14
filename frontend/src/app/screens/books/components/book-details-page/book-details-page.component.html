@@ -1,5 +1,12 @@
 <ds-book-details [book]="(book$ | async)!">
-  <button (click)="onClick()" class="w-8 h-8 flex items-center justify-center rounded shadow" [ngClass]="{ 'bg-primary-p300-main': (isSelectedBookInCollection$ | async) === false, 'bg-red-700': (isSelectedBookInCollection$ | async) }">
+  <button
+    (click)="onClick()"
+    class="w-8 h-8 flex items-center justify-center rounded shadow"
+    [ngClass]="{
+      'bg-primary-p300-main': (isSelectedBookInCollection$ | async) === false,
+      'bg-red-700': (isSelectedBookInCollection$ | async)
+    }"
+  >
     <ds-icon [size]="20" [name]="icons.Save" [color]="iconColors.white"></ds-icon>
   </button>
 </ds-book-details>

@@ -28,7 +28,7 @@ import { TranslationModule } from './translations/translations.module';
     AppRouterModule,
     AppEffectsModule,
     AppServicesModule,
-    TranslationModule
+    TranslationModule,
   ],
   bootstrap: [AppComponent],
 })

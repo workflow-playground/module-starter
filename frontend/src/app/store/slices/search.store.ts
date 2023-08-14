@@ -50,7 +50,7 @@ export const reducer = createReducer(
     ...state,
     loading: false,
     error: errorMsg,
-  }))
+  })),
 );
 
 // Selectors

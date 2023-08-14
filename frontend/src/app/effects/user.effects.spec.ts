@@ -25,7 +25,7 @@ describe('UserEffects', () => {
   describe('idle$', () => {
     it('should trigger idleTimeout action after 5 minutes', fakeAsync(() => {
       let action: Action | undefined;
-      effects.idle$.subscribe((res) => (action = res));
+      effects.idle$.subscribe(res => (action = res));
 
       // Initial action to trigger the effect
       eventsMap['click']();
@@ -40,7 +40,7 @@ describe('UserEffects', () => {
 
     it('should reset timeout on user activity', fakeAsync(() => {
       let action: Action | undefined;
-      effects.idle$.subscribe((res) => (action = res));
+      effects.idle$.subscribe(res => (action = res));
 
       // Initial action to trigger the effect
       eventsMap['keydown']();

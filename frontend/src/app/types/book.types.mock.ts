@@ -18,6 +18,6 @@ export const bookMock: Book = {
     readingModes: {
       pageCount: 1,
     },
-    language: 'en'
+    language: 'en',
   },
 };

@@ -10,7 +10,7 @@ describe('BookStorageService', () => {
   const localStorageFake: Storage & any = {
     removeItem: jest.fn(),
     setItem: jest.fn(),
-    getItem: jest.fn((_) => JSON.stringify(persistedCollection)),
+    getItem: jest.fn(_ => JSON.stringify(persistedCollection)),
   };
 
   const book1 = { id: '111', volumeInfo: {} } as Book;
@@ -59,9 +59,7 @@ describe('BookStorageService', () => {
     it('should call get collection', () => {
       const expected = cold('(-a|)', { a: persistedCollection });
       expect(fixture.getCollection()).toBeObservable(expected);
-      expect(localStorageFake.getItem).toHaveBeenCalledWith(
-        persistedStorageKey
-      );
+      expect(localStorageFake.getItem).toHaveBeenCalledWith(persistedStorageKey);
       localStorageFake.getItem.mockClear();
     });
   });
@@ -71,10 +69,7 @@ describe('BookStorageService', () => {
       const result = [...persistedCollection, book1];
       const expected = cold('(-a|)', { a: result });
       expect(fixture.addToCollection([book1])).toBeObservable(expected);
-      expect(localStorageFake.setItem).toHaveBeenCalledWith(
-        persistedStorageKey,
-        JSON.stringify(result)
-      );
+      expect(localStorageFake.setItem).toHaveBeenCalledWith(persistedStorageKey, JSON.stringify(result));
 
       localStorageFake.setItem.mockClear();
     });
@@ -83,44 +78,27 @@ describe('BookStorageService', () => {
       const result = [...persistedCollection, book1, book3];
       const expected = cold('(-a|)', { a: result });
       expect(fixture.addToCollection([book1, book3])).toBeObservable(expected);
-      expect(localStorageFake.setItem).toHaveBeenCalledWith(
-        persistedStorageKey,
-        JSON.stringify(result)
-      );
+      expect(localStorageFake.setItem).toHaveBeenCalledWith(persistedStorageKey, JSON.stringify(result));
       localStorageFake.setItem.mockClear();
     });
   });
 
   describe('removeFromCollection', () => {
     it('should remove item from collection', () => {
-      const filterCollection = persistedCollection.filter(
-        (f) => f.id !== book2.id
-      );
+      const filterCollection = persistedCollection.filter(f => f.id !== book2.id);
       const expected = cold('(-a|)', { a: filterCollection });
       expect(fixture.removeFromCollection([book2.id])).toBeObservable(expected);
-      expect(localStorageFake.getItem).toHaveBeenCalledWith(
-        persistedStorageKey
-      );
-      expect(localStorageFake.setItem).toHaveBeenCalledWith(
-        persistedStorageKey,
-        JSON.stringify(filterCollection)
-      );
+      expect(localStorageFake.getItem).toHaveBeenCalledWith(persistedStorageKey);
+      expect(localStorageFake.setItem).toHaveBeenCalledWith(persistedStorageKey, JSON.stringify(filterCollection));
       localStorageFake.getItem.mockClear();
     });
 
     it('should remove multiple items from collection', () => {
-      const filterCollection = persistedCollection.filter(
-        (f) => f.id !== book4.id
-      );
+      const filterCollection = persistedCollection.filter(f => f.id !== book4.id);
       const expected = cold('(-a|)', { a: filterCollection });
       expect(fixture.removeFromCollection([book4.id])).toBeObservable(expected);
-      expect(localStorageFake.getItem).toHaveBeenCalledWith(
-        persistedStorageKey
-      );
-      expect(localStorageFake.setItem).toHaveBeenCalledWith(
-        persistedStorageKey,
-        JSON.stringify(filterCollection)
-      );
+      expect(localStorageFake.getItem).toHaveBeenCalledWith(persistedStorageKey);
+      expect(localStorageFake.setItem).toHaveBeenCalledWith(persistedStorageKey, JSON.stringify(filterCollection));
       localStorageFake.getItem.mockClear();
     });
 
@@ -135,9 +113,7 @@ describe('BookStorageService', () => {
     it('should delete storage key and collection', () => {
       const expected = cold('(-a|)', { a: true });
       expect(fixture.deleteCollection()).toBeObservable(expected);
-      expect(localStorageFake.removeItem).toHaveBeenCalledWith(
-        persistedStorageKey
-      );
+      expect(localStorageFake.removeItem).toHaveBeenCalledWith(persistedStorageKey);
       localStorageFake.removeItem.mockClear();
     });
   });

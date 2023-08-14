@@ -49,8 +49,8 @@ describe('BookEffects', () => {
       expect(
         effects.search$({
           debounce: 30,
-          scheduler: getTestScheduler()
-        })
+          scheduler: getTestScheduler(),
+        }),
       ).toBeObservable(expected);
     });
 
@@ -69,8 +69,8 @@ describe('BookEffects', () => {
       expect(
         effects.search$({
           debounce: 30,
-          scheduler: getTestScheduler()
-        })
+          scheduler: getTestScheduler(),
+        }),
       ).toBeObservable(expected);
     });
 
@@ -83,8 +83,8 @@ describe('BookEffects', () => {
       expect(
         effects.search$({
           debounce: 30,
-          scheduler: getTestScheduler()
-        })
+          scheduler: getTestScheduler(),
+        }),
       ).toBeObservable(expected);
     });
   });

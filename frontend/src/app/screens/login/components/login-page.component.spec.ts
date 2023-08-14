@@ -63,7 +63,6 @@ describe('Login Page', () => {
 
     instance.form.setValue(credentials);
 
-
     instance.submit();
 
     expect(mockStore.dispatch).toHaveBeenCalledWith(actions.loginPage.login({ credentials }));

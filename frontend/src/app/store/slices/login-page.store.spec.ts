@@ -1,6 +1,6 @@
-import { Credentials, User } from "../../types/user.types";
-import { reducer, actions, initialState } from "./login-page.store";
-import * as authStore from "./auth.store";
+import { Credentials, User } from '../../types/user.types';
+import { reducer, actions, initialState } from './login-page.store';
+import * as authStore from './auth.store';
 
 describe('LoginPageReducer', () => {
   describe('undefined action', () => {

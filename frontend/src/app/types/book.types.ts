@@ -19,4 +19,3 @@ export interface Book {
     language: string;
   };
 }
-

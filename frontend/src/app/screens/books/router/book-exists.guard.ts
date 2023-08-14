@@ -14,9 +14,7 @@ import * as actions from '../../../store/actions';
  * to activate this route. Guards must return an observable of true or false.
  */
 
-export const bookExistsGuard = (
-  route: ActivatedRouteSnapshot
-): Observable<boolean> => {
+export const bookExistsGuard = (route: ActivatedRouteSnapshot): Observable<boolean> => {
   const store = inject(Store);
   const googleBooks = inject(GoogleBooksService);
   const router = inject(Router);
@@ -27,8 +25,8 @@ export const bookExistsGuard = (
    */
   function hasBookInStore(id: string): Observable<boolean> {
     return store.select(selectors.books.selectBookEntities).pipe(
-      map((entities) => !!entities[id]),
-      take(1)
+      map(entities => !!entities[id]),
+      take(1),
     );
   }
 
@@ -38,13 +36,13 @@ export const bookExistsGuard = (
    */
   function hasBookInApi(id: string): Observable<boolean> {
     return googleBooks.retrieveBook(id).pipe(
-      map((bookEntity) => actions.books.loadBook({ book: bookEntity })),
-      tap((action) => store.dispatch(action)),
-      map((book) => !!book),
+      map(bookEntity => actions.books.loadBook({ book: bookEntity })),
+      tap(action => store.dispatch(action)),
+      map(book => !!book),
       catchError(() => {
         router.navigate(['/404']);
         return of(false);
-      })
+      }),
     );
   }
 
@@ -55,13 +53,13 @@ export const bookExistsGuard = (
    */
   function hasBook(id: string): Observable<boolean> {
     return hasBookInStore(id).pipe(
-      switchMap((inStore) => {
+      switchMap(inStore => {
         if (inStore) {
           return of(inStore);
         }
 
         return hasBookInApi(id);
-      })
+      }),
     );
   }
 

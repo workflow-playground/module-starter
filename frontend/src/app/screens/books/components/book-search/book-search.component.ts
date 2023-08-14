@@ -4,7 +4,7 @@ import { IconColor, IconName } from '@ds24/elements';
 @Component({
   selector: 'ds-book-search',
   templateUrl: './book-search.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookSearchComponent {
   @Input() query = '';

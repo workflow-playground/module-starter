@@ -23,9 +23,7 @@ describe('RouterEffects', () => {
           useValue: of(routerNavigatedAction),
         },
         provideMockStore({
-          selectors: [
-            { selector: selectors.router.selectRouteData, value: { title: 'Search' } },
-          ],
+          selectors: [{ selector: selectors.router.selectRouteData, value: { title: 'Search' } }],
         }),
         { provide: Title, useValue: { setTitle: jest.fn() } },
       ],
@@ -38,9 +36,7 @@ describe('RouterEffects', () => {
   describe('updateTitle$', () => {
     it('should update the title on router navigation', () => {
       effects.updateTitle$.subscribe();
-      expect(titleService.setTitle).toHaveBeenCalledWith(
-        'DS24 Application Reference - Search'
-      );
+      expect(titleService.setTitle).toHaveBeenCalledWith('DS24 Application Reference - Search');
     });
   });
 });

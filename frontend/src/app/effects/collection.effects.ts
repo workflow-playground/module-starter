@@ -20,25 +20,18 @@ export class CollectionEffects {
    * Wrapping the supported call in `defer` makes
    * effect easier to test.
    */
-  checkStorageSupport$ = createEffect(
-    () => defer(() => this.storageService.supported()),
-    { dispatch: false }
-  );
+  checkStorageSupport$ = createEffect(() => defer(() => this.storageService.supported()), { dispatch: false });
 
   loadCollection$ = createEffect(() =>
     this.actions$.pipe(
       ofType(actions.collection.init),
       switchMap(() =>
         this.storageService.getCollection().pipe(
-          map((books: Book[]) =>
-            actions.collection.loadBooksSuccess({ books })
-          ),
-          catchError((error) =>
-            of(actions.collection.loadBooksFailure({ error }))
-          )
-        )
-      )
-    )
+          map((books: Book[]) => actions.collection.loadBooksSuccess({ books })),
+          catchError(error => of(actions.collection.loadBooksFailure({ error }))),
+        ),
+      ),
+    ),
   );
 
   addBookToCollection$ = createEffect(() =>
@@ -47,10 +40,10 @@ export class CollectionEffects {
       mergeMap(({ book }) =>
         this.storageService.addToCollection([book]).pipe(
           map(() => actions.collection.addBookSuccess({ book })),
-          catchError(() => of(actions.collection.addBookFailure({ book })))
-        )
-      )
-    )
+          catchError(() => of(actions.collection.addBookFailure({ book }))),
+        ),
+      ),
+    ),
   );
 
   removeBookFromCollection$ = createEffect(() =>
@@ -59,14 +52,14 @@ export class CollectionEffects {
       mergeMap(({ book }) =>
         this.storageService.removeFromCollection([book.id]).pipe(
           map(() => actions.collection.removeBookSuccess({ book })),
-          catchError(() => of(actions.collection.removeBookFailure({ book })))
-        )
-      )
-    )
+          catchError(() => of(actions.collection.removeBookFailure({ book }))),
+        ),
+      ),
+    ),
   );
 
   constructor(
     private actions$: Actions,
-    private storageService: BookStorageService
+    private storageService: BookStorageService,
   ) {}
 }

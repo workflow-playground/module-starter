@@ -9,5 +9,5 @@ const defaultSelectors = getRouterSelectors();
 
 export const selectors = {
   ...defaultSelectors,
-  selectCurrentPage: createSelector(defaultSelectors.selectRouteData, (data: any) => get(data, 'page', null))
-}
+  selectCurrentPage: createSelector(defaultSelectors.selectRouteData, (data: any) => get(data, 'page', null)),
+};

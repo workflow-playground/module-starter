@@ -23,12 +23,14 @@ export class BookDetailsPageComponent {
   constructor(private store: Store) {}
 
   onClick() {
-    combineLatest([this.book$, this.isSelectedBookInCollection$]).pipe(take(1)).subscribe(([book, isSelectedBookInCollection]) => {
-      if (!isSelectedBookInCollection) {
-        this.store.dispatch(actions.books.addBook({ book }));
-      } else {
-        this.store.dispatch(actions.books.removeBook({ book }));
-      }
-    })
+    combineLatest([this.book$, this.isSelectedBookInCollection$])
+      .pipe(take(1))
+      .subscribe(([book, isSelectedBookInCollection]) => {
+        if (!isSelectedBookInCollection) {
+          this.store.dispatch(actions.books.addBook({ book }));
+        } else {
+          this.store.dispatch(actions.books.removeBook({ book }));
+        }
+      });
   }
 }

@@ -6,12 +6,4 @@ import { selectors as auth } from './slices/auth.store';
 import { selectors as loginPage } from './slices/login-page.store';
 import { selectors as router } from './slices/router.store';
 
-export {
-  router,
-  books,
-  collection,
-  search,
-  layout,
-  auth,
-  loginPage
-}
+export { router, books, collection, search, layout, auth, loginPage };

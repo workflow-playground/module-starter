@@ -8,7 +8,7 @@ import * as selectors from '../../../store/selectors';
 @Component({
   selector: 'ds-sidenav',
   templateUrl: './sidenav.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidenavComponent {
   showSidenav$: Observable<boolean>;

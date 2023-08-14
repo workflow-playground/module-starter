@@ -21,7 +21,7 @@ export const reducer = createReducer(
   initialState,
   on(actions.closeSidenav, () => ({ showSidenav: false })),
   on(actions.openSidenav, () => ({ showSidenav: true })),
-  on(authActions.logoutConfirmation, () => ({ showSidenav: false }))
+  on(authActions.logoutConfirmation, () => ({ showSidenav: false })),
 );
 
 // Selectors

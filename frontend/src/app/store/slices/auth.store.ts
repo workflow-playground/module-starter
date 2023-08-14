@@ -23,7 +23,7 @@ export const initialState: State = {
 export const reducer = createReducer(
   initialState,
   on(actions.loginSuccess, (state, { user }) => ({ ...state, user })),
-  on(actions.logout, () => initialState)
+  on(actions.logout, () => initialState),
 );
 
 // Selectors
@@ -32,5 +32,5 @@ const selectUser = createSelector(selectSlice, (state: State) => state.user);
 
 export const selectors = {
   selectUser,
-  selectLoggedIn: createSelector(selectUser, (user) => !!user)
-}
+  selectLoggedIn: createSelector(selectUser, user => !!user),
+};

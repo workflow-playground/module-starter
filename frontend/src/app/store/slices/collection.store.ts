@@ -73,41 +73,22 @@ export const reducer = createReducer(
   on(booksActions.removeBook, actions.addBookFailure, (state, { book }) => ({
     ...state,
     ids: state.ids.filter(id => id !== book.id),
-  }))
+  })),
 );
 
 // Selectors
 const selectSlice = createFeatureSelector<State>(featureKey);
 
-const selectCollectionBookIds = createSelector(
-  selectSlice,
-  (state: State) => state.ids
-);
+const selectCollectionBookIds = createSelector(selectSlice, (state: State) => state.ids);
 
 export const selectors = {
-  selectCollectionLoaded: createSelector(
-    selectSlice,
-    (state: State) => state.loaded
-  ),
-  getCollectionLoading: createSelector(
-    selectSlice,
-    (state: State) => state.loading
-  ),
+  selectCollectionLoaded: createSelector(selectSlice, (state: State) => state.loaded),
+  getCollectionLoading: createSelector(selectSlice, (state: State) => state.loading),
   selectCollectionBookIds,
-  selectBookCollection: createSelector(
-    booksSelectors.selectBookEntities,
-    selectCollectionBookIds,
-    (entities, ids) => {
-      return ids
-        .map((id) => entities[id])
-        .filter((book): book is Book => book != null);
-    }
-  ),
-  isSelectedBookInCollection: createSelector(
-    selectCollectionBookIds,
-    booksSelectors.selectId,
-    (ids, selected) => {
-      return !!selected && ids.indexOf(selected) > -1;
-    }
-  )
-}
+  selectBookCollection: createSelector(booksSelectors.selectBookEntities, selectCollectionBookIds, (entities, ids) => {
+    return ids.map(id => entities[id]).filter((book): book is Book => book != null);
+  }),
+  isSelectedBookInCollection: createSelector(selectCollectionBookIds, booksSelectors.selectId, (ids, selected) => {
+    return !!selected && ids.indexOf(selected) > -1;
+  }),
+};
