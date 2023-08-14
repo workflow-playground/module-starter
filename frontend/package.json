@@ -59,7 +59,7 @@
     "@nx/jest": "16.6.0",
     "husky": "8.0.3",
     "postcss": "8.4.27",
-    "autoprefixer": "10.4.14",
+    "autoprefixer": "10.4.15",
     "@fontsource/roboto": "5.0.8",
     "@types/lodash-es": "4.17.8"
   }
