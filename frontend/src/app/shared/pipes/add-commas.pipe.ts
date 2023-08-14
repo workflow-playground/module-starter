@@ -15,9 +15,7 @@ export class AddCommasPipe implements PipeTransform {
       case 2:
         return authors.join(' and ');
       default:
-        const last = authors[authors.length - 1];
-        const remaining = authors.slice(0, -1);
-        return `${remaining.join(', ')}, and ${last}`;
+        return `${authors.slice(0, -1).join(', ')}, and ${authors[authors.length - 1]}`;
     }
   }
 }

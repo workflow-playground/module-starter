@@ -21,7 +21,7 @@ export class BookStorageService {
 
   getCollection(): Observable<Book[]> {
     return this.supported().pipe(
-      map(_ => this.storage.getItem(this.collectionKey)),
+      map(() => this.storage.getItem(this.collectionKey)),
       map((value: string | null) => (value ? JSON.parse(value) : [])),
     );
   }

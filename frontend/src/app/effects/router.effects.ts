@@ -32,7 +32,7 @@ export class RouterEffects {
         this.store.select(selectors.router.selectCurrentPage),
         this.store.select(selectors.collection.selectCollectionLoaded),
       ),
-      filter(([_action, page, loaded]) => page === 'collection' && !loaded),
+      filter(([, page, loaded]) => page === 'collection' && !loaded),
       map(() => actions.collection.init()),
     ),
   );
@@ -44,8 +44,8 @@ export class RouterEffects {
         this.store.select(selectors.router.selectCurrentPage),
         this.store.select(selectors.router.selectRouteParam('id')),
       ),
-      filter(([_action, page, id]) => page === 'collection' && !!id),
-      map(([_action, _page, id]) => actions.books.selectBook({ id: id as string })),
+      filter(([, page, id]) => page === 'collection' && !!id),
+      map(([, , id]) => actions.books.selectBook({ id: id as string })),
     ),
   );
 

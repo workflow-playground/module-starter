@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, NgIf } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { ButtonModule, DsFormsModule } from '@ds24/elements';
@@ -13,7 +13,8 @@ const routes: Routes = [{ path: '', component: LoginPageComponent, data: { title
 
 @NgModule({
   imports: [
-    CommonModule,
+    NgIf,
+    AsyncPipe,
     ReactiveFormsModule,
     DsFormsModule,
     ButtonModule,

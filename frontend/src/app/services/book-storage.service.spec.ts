@@ -10,7 +10,7 @@ describe('BookStorageService', () => {
   const localStorageFake: Storage & any = {
     removeItem: jest.fn(),
     setItem: jest.fn(),
-    getItem: jest.fn(_ => JSON.stringify(persistedCollection)),
+    getItem: jest.fn(() => JSON.stringify(persistedCollection)),
   };
 
   const book1 = { id: '111', volumeInfo: {} } as Book;
