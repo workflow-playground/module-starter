@@ -97,3 +97,22 @@ jobs:
           enable-cache: true
       - name: Build
         run: devbox run just backend/security-check
+
+  frontend:
+    name: Frontend
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install devbox
+        uses: jetpack-io/devbox-install-action@v0.5.0
+        with:
+          enable-cache: true
+      - name: Install dependencies
+        run: devbox run just frontend/install
+      - name: Lint
+        run: devbox run just frontend/lint
+      - name: Unit Tests
+        run: devbox run just frontend/tests
+      - name: Build
+        run: devbox run just frontend/build

@@ -9,3 +9,12 @@ build:
 
 start:
     pnpm start
+
+test:
+    pnpm test -- --collect-coverage
+
+lint:
+    pnpm lint
+
+fix:
+    pnpm fix
