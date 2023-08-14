@@ -14,6 +14,11 @@ start:
     
 fix:
     just backend/fix
+    just frontend/fix
+
+lint:
+    jsut frontend/lint
     
 test:
     just backend/test
+    just frontend/test
