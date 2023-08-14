@@ -105,6 +105,8 @@ jobs:
         
   security-check:
     name: Security check
+    needs:
+    - install
     runs-on: ubuntu-22.04
     timeout-minutes: 10
     steps:
