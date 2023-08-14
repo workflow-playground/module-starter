@@ -1,13 +1,12 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "!**/*"
-  ],
+  "ignorePatterns": ["!**/*"],
+  "env": {
+    "jest": true
+  },
   "overrides": [
     {
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
       "parser": "@typescript-eslint/parser",
       "parserOptions": {
         "project": "./tsconfig.*?.json"
@@ -17,7 +16,8 @@
         "@angular-eslint",
         "unused-imports",
         "import",
-        "simple-import-sort"
+        "simple-import-sort",
+        "eslint-plugin-jest"
       ],
       "extends": [],
       "rules": {
@@ -35,11 +35,8 @@
       }
     },
     {
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
       "extends": [
-        "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/recommended",
         // This is required if you use inline templates in Components,
@@ -47,17 +44,14 @@
         "plugin:@rx-angular/eslint-plugin/recommended"
       ],
       "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
         "no-restricted-imports": [
           "error",
           {
             "patterns": [
               {
-                "group": [
-                  "@angular/common"
-                ],
-                "importNames": [
-                  "CommonModule"
-                ],
+                "group": ["@angular/common"],
+                "importNames": ["CommonModule"],
                 "message": "Use the componen or directve directly e.g. `import {NgFor} from '@angular/common`'."
               }
             ]
@@ -67,10 +61,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": [
-              "app",
-              "ct"
-            ],
+            "prefix": ["app", "ds"],
             "style": "camelCase"
           }
         ],
@@ -78,23 +69,20 @@
           "error",
           {
             "type": "element",
-            "prefix": [
-              "app",
-              "ct"
-            ],
+            "prefix": ["app", "ds"],
             "style": "kebab-case"
           }
         ]
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
-      "extends": [
-        "plugin:@angular-eslint/template/recommended",
-        "plugin:@angular-eslint/template/accessibility"
-      ],
+      "files": ["*.spec.ts"],
+      "extends": ["plugin:@rx-angular/eslint-plugin/recommended"],
+      "rules": { "@rx-angular/no-explicit-change-detection-apis": "off" }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended", "plugin:@angular-eslint/template/accessibility"],
       "rules": {
         /**
          * Any template/HTML related rules you wish to use/reconfigure over and above the
