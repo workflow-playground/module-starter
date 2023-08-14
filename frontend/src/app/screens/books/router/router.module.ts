@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CollectionPageComponent } from '../components/collection-page.component';
+import { CollectionPageComponent } from '../components/collection-page/collection-page.component';
 import { bookExistsGuard } from './book-exists.guard';
-import { BookDetailsPageComponent } from '../components/book-details-page.component';
-import { FindBookPageComponent } from '../components/find-book-page.component';
+import { BookDetailsPageComponent } from '../components/book-details-page/book-details-page.component';
+import { FindBookPageComponent } from '../components/find-book-page/find-book-page.component';
 
 export const routes: Routes = [
   {

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { get } from 'lodash-es';
-import { Book } from '../../../types/book.types';
+import { Book } from '../../../../types/book.types';
 
 @Component({
   selector: 'ds-book-card',

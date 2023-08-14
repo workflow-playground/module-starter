@@ -1,8 +1,8 @@
 import { Action } from '@ngrx/store';
 import { TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { UserEffects } from './user.effects';
 
-import { UserEffects } from '@example-app/core/effects';
-import { UserActions } from '@example-app/core/actions';
+import { actions } from '../store';
 
 describe('UserEffects', () => {
   let effects: UserEffects;
@@ -35,7 +35,7 @@ describe('UserEffects', () => {
 
       tick(3 * 60 * 1000);
       expect(action).toBeDefined();
-      expect(action?.type).toBe(UserActions.idleTimeout.type);
+      expect(action?.type).toBe(actions.user.idleTimeout.type);
     }));
 
     it('should reset timeout on user activity', fakeAsync(() => {
@@ -53,7 +53,7 @@ describe('UserEffects', () => {
 
       tick(1 * 60 * 1000);
       expect(action).toBeDefined();
-      expect(action?.type).toBe(UserActions.idleTimeout.type);
+      expect(action?.type).toBe(actions.user.idleTimeout.type);
     }));
   });
 });

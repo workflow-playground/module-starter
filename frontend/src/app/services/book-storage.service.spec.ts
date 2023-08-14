@@ -1,12 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
 import { cold } from 'jasmine-marbles';
-
-import { Book } from '@example-app/books/models';
-import {
-  BookStorageService,
-  LOCAL_STORAGE_TOKEN,
-} from '@example-app/core/services/book-storage.service';
+import { BookStorageService, LOCAL_STORAGE_TOKEN } from './book-storage.service';
+import { Book } from '../types/book.types';
 
 describe('BookStorageService', () => {
   let fixture: any;

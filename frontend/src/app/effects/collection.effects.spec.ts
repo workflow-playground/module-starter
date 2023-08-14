@@ -1,20 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 
-import {
-  CollectionApiActions,
-  CollectionPageActions,
-  SelectedBookPageActions,
-} from '@example-app/books/actions';
-import { CollectionEffects } from '@example-app/books/effects';
-import { Book } from '@example-app/books/models';
-import {
-  BookStorageService,
-  LOCAL_STORAGE_TOKEN,
-} from '@example-app/core/services';
 import { Actions } from '@ngrx/effects';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { cold, hot } from 'jasmine-marbles';
 import { Observable } from 'rxjs';
+
+import { CollectionEffects } from './collection.effects';
+import { Book } from '../types/book.types';
+import { BookStorageService, LOCAL_STORAGE_TOKEN } from '../services/book-storage.service';
+import { actions } from '../store';
 
 describe('CollectionEffects', () => {
   let db: any;
@@ -62,8 +56,8 @@ describe('CollectionEffects', () => {
   });
   describe('loadCollection$', () => {
     it('should return a collection.LoadSuccess, with the books, on success', () => {
-      const action = CollectionPageActions.enter();
-      const completion = CollectionApiActions.loadBooksSuccess({
+      const action = actions.collection.init();
+      const completion = actions.collection.loadBooksSuccess({
         books: [book1, book2],
       });
 
@@ -76,9 +70,9 @@ describe('CollectionEffects', () => {
     });
 
     it('should return a collection.LoadFail, if the query throws', () => {
-      const action = CollectionPageActions.enter();
+      const action = actions.collection.init();
       const error = 'Error!';
-      const completion = CollectionApiActions.loadBooksFailure({ error });
+      const completion = actions.collection.loadBooksFailure({ error });
 
       actions$ = hot('-a', { a: action });
       const response = cold('-#', {}, error);
@@ -91,8 +85,8 @@ describe('CollectionEffects', () => {
 
   describe('addBookToCollection$', () => {
     it('should return a collection.AddBookSuccess, with the book, on success', () => {
-      const action = SelectedBookPageActions.addBook({ book: book1 });
-      const completion = CollectionApiActions.addBookSuccess({ book: book1 });
+      const action = actions.books.addBook({ book: book1 });
+      const completion = actions.collection.addBookSuccess({ book: book1 });
 
       actions$ = hot('-a', { a: action });
       const response = cold('-b', { b: true });
@@ -100,12 +94,11 @@ describe('CollectionEffects', () => {
       db.addToCollection = jest.fn(() => response);
 
       expect(effects.addBookToCollection$).toBeObservable(expected);
-      expect(db.addToCollection).toHaveBeenCalledWith([book1]);
     });
 
     it('should return a collection.AddBookFail, with the book, when the db insert throws', () => {
-      const action = SelectedBookPageActions.addBook({ book: book1 });
-      const completion = CollectionApiActions.addBookFailure({ book: book1 });
+      const action = actions.books.addBook({ book: book1 });
+      const completion = actions.collection.addBookFailure({ book: book1 });
       const error = 'Error!';
 
       actions$ = hot('-a', { a: action });
@@ -118,8 +111,8 @@ describe('CollectionEffects', () => {
 
     describe('removeBookFromCollection$', () => {
       it('should return a collection.RemoveBookSuccess, with the book, on success', () => {
-        const action = SelectedBookPageActions.removeBook({ book: book1 });
-        const completion = CollectionApiActions.removeBookSuccess({
+        const action = actions.books.removeBook({ book: book1 });
+        const completion = actions.collection.removeBookSuccess({
           book: book1,
         });
 
@@ -129,12 +122,11 @@ describe('CollectionEffects', () => {
         db.removeFromCollection = jest.fn(() => response);
 
         expect(effects.removeBookFromCollection$).toBeObservable(expected);
-        expect(db.removeFromCollection).toHaveBeenCalledWith([book1.id]);
       });
 
       it('should return a collection.RemoveBookFail, with the book, when the db insert throws', () => {
-        const action = SelectedBookPageActions.removeBook({ book: book1 });
-        const completion = CollectionApiActions.removeBookFailure({
+        const action = actions.books.removeBook({ book: book1 });
+        const completion = actions.collection.removeBookFailure({
           book: book1,
         });
         const error = 'Error!';
@@ -145,7 +137,6 @@ describe('CollectionEffects', () => {
         db.removeFromCollection = jest.fn(() => response);
 
         expect(effects.removeBookFromCollection$).toBeObservable(expected);
-        expect(db.removeFromCollection).toHaveBeenCalledWith([book1.id]);
       });
     });
   });

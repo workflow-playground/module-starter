@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { IconColor, IconName } from '@ds24/elements';
 
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import * as actions from '../../../store/actions';
-import * as selectors from '../../../store/selectors';
-import { Book } from '../../../types/book.types';
-import { IconColor, IconName } from '@ds24/elements';
+import * as actions from '../../../../store/actions';
+import * as selectors from '../../../../store/selectors';
+import { Book } from '../../../../types/book.types';
 
 @Component({
   selector: 'ds-find-book-page',

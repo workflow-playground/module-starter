@@ -1,0 +1,243 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Page should compile 1`] = `
+<ds-login-page
+  _document={[Function Document]}
+  error$={[Function _Store]}
+  form={[Function FormGroup]}
+  ngAfterContentChecked$={[Function Subject]}
+  ngAfterContentInit$={[Function Subject]}
+  ngAfterViewChecked$={[Function Subject]}
+  ngAfterViewInit$={[Function Subject]}
+  ngDoCheck$={[Function Subject]}
+  ngOnChanges$={[Function Subject]}
+  ngOnDestroy$={[Function Subject]}
+  ngOnInit$={[Function Subject]}
+  store={[Function _MockStore]}
+>
+  <div
+    class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8"
+  >
+    <div
+      class="sm:mx-auto sm:w-full sm:max-w-sm"
+    >
+      <h2
+        class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"
+      >
+        Sign in to your account
+      </h2>
+    </div>
+    <div
+      class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
+    >
+      <form
+        class="space-y-6 ng-untouched ng-pristine ng-valid"
+        novalidate=""
+      >
+        <ds-input-wrapper>
+          <input
+            class="ng-untouched ng-pristine ng-valid"
+            dsinput=""
+            formcontrolname="username"
+            placeholder="LOGIN.USERNAME.PLACEHOLDER"
+            type="text"
+          />
+          <ds-form-label>
+            LOGIN.USERNAME.LABEL
+          </ds-form-label>
+        </ds-input-wrapper>
+        <ds-input-wrapper>
+          <input
+            class="ng-untouched ng-pristine ng-valid"
+            dsinput=""
+            formcontrolname="password"
+            type="password"
+          />
+          <ds-form-label>
+            LOGIN.PASSWORD.LABEL
+          </ds-form-label>
+          <ds-form-sub-text>
+            LOGIN.PASSWORD.HINT
+          </ds-form-sub-text>
+        </ds-input-wrapper>
+        <div>
+          <button
+            class="flex w-full justify-center rounded-md"
+            dsbutton="primary"
+            type="submit"
+          >
+            LOGIN.SIGN_IN
+          </button>
+        </div>
+        <div
+          class="w-full text-center"
+        >
+        </div>
+      </form>
+    </div>
+  </div>
+</ds-login-page>
+`;
+
+exports[`Login Page should disable the form if pending 1`] = `
+<ds-login-page
+  _document={[Function Document]}
+  error$={[Function _Store]}
+  form={[Function FormGroup]}
+  ngAfterContentChecked$={[Function Subject]}
+  ngAfterContentInit$={[Function Subject]}
+  ngAfterViewChecked$={[Function Subject]}
+  ngAfterViewInit$={[Function Subject]}
+  ngDoCheck$={[Function Subject]}
+  ngOnChanges$={[Function Subject]}
+  ngOnDestroy$={[Function Subject]}
+  ngOnInit$={[Function Subject]}
+  store={[Function _MockStore]}
+>
+  <div
+    class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8"
+  >
+    <div
+      class="sm:mx-auto sm:w-full sm:max-w-sm"
+    >
+      <h2
+        class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"
+      >
+        Sign in to your account
+      </h2>
+    </div>
+    <div
+      class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
+    >
+      <form
+        class="space-y-6 ng-untouched ng-pristine"
+        novalidate=""
+      >
+        <ds-input-wrapper>
+          <input
+            class="ng-untouched ng-pristine"
+            disabled=""
+            dsinput=""
+            formcontrolname="username"
+            placeholder="LOGIN.USERNAME.PLACEHOLDER"
+            type="text"
+          />
+          <ds-form-label>
+            LOGIN.USERNAME.LABEL
+          </ds-form-label>
+        </ds-input-wrapper>
+        <ds-input-wrapper>
+          <input
+            class="ng-untouched ng-pristine"
+            disabled=""
+            dsinput=""
+            formcontrolname="password"
+            type="password"
+          />
+          <ds-form-label>
+            LOGIN.PASSWORD.LABEL
+          </ds-form-label>
+          <ds-form-sub-text>
+            LOGIN.PASSWORD.HINT
+          </ds-form-sub-text>
+        </ds-input-wrapper>
+        <div>
+          <button
+            class="flex w-full justify-center rounded-md"
+            dsbutton="primary"
+            type="submit"
+          >
+            LOGIN.SIGN_IN
+          </button>
+        </div>
+        <div
+          class="w-full text-center"
+        >
+        </div>
+      </form>
+    </div>
+  </div>
+</ds-login-page>
+`;
+
+exports[`Login Page should display an error message if provided 1`] = `
+<ds-login-page
+  _document={[Function Document]}
+  error$={[Function _Store]}
+  form={[Function FormGroup]}
+  ngAfterContentChecked$={[Function Subject]}
+  ngAfterContentInit$={[Function Subject]}
+  ngAfterViewChecked$={[Function Subject]}
+  ngAfterViewInit$={[Function Subject]}
+  ngDoCheck$={[Function Subject]}
+  ngOnChanges$={[Function Subject]}
+  ngOnDestroy$={[Function Subject]}
+  ngOnInit$={[Function Subject]}
+  store={[Function _MockStore]}
+>
+  <div
+    class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8"
+  >
+    <div
+      class="sm:mx-auto sm:w-full sm:max-w-sm"
+    >
+      <h2
+        class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"
+      >
+        Sign in to your account
+      </h2>
+    </div>
+    <div
+      class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
+    >
+      <form
+        class="space-y-6 ng-untouched ng-pristine ng-valid"
+        novalidate=""
+      >
+        <ds-input-wrapper>
+          <input
+            class="ng-untouched ng-pristine ng-valid"
+            dsinput=""
+            formcontrolname="username"
+            placeholder="LOGIN.USERNAME.PLACEHOLDER"
+            type="text"
+          />
+          <ds-form-label>
+            LOGIN.USERNAME.LABEL
+          </ds-form-label>
+        </ds-input-wrapper>
+        <ds-input-wrapper>
+          <input
+            class="ng-untouched ng-pristine ng-valid"
+            dsinput=""
+            formcontrolname="password"
+            type="password"
+          />
+          <ds-form-label>
+            LOGIN.PASSWORD.LABEL
+          </ds-form-label>
+          <ds-form-sub-text>
+            LOGIN.PASSWORD.HINT
+          </ds-form-sub-text>
+        </ds-input-wrapper>
+        <div>
+          <button
+            class="flex w-full justify-center rounded-md"
+            dsbutton="primary"
+            type="submit"
+          >
+            LOGIN.SIGN_IN
+          </button>
+        </div>
+        <div
+          class="w-full text-center"
+        >
+          <ds-form-error>
+            Invalid Credentials
+          </ds-form-error>
+        </div>
+      </form>
+    </div>
+  </div>
+</ds-login-page>
+`;

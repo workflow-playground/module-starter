@@ -6,7 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LogoutDialogComponent } from './components/logout-dialog.component';
 
 @NgModule({
-  imports: [ModalModule, ButtonModule, MatDialogModule, TranslateModule],
+  imports: [ModalModule, ButtonModule, MatDialogModule, TranslateModule.forChild()],
   declarations: [LogoutDialogComponent],
 })
 export class LogoutFeatureModule {}

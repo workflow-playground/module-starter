@@ -7,7 +7,7 @@ export const bookMock: Book = {
     subtitle: 'subtitle',
     authors: ['author'],
     publisher: 'publisher',
-    publishDate: '',
+    publishedDate: '',
     description: 'description',
     averageRating: 3,
     ratingsCount: 5,
@@ -15,5 +15,9 @@ export const bookMock: Book = {
       thumbnail: 'string',
       smallThumbnail: 'string',
     },
+    readingModes: {
+      pageCount: 1,
+    },
+    language: 'en'
   },
 };

@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-
-import * as selectors from '../../../store/selectors';
 import { IconColor, IconName } from '@ds24/elements';
+
+import * as selectors from '../../../../store/selectors';
 
 @Component({
   selector: 'ds-collection-page',
@@ -15,8 +15,5 @@ export class CollectionPageComponent {
 
   books$ = this.store.select(selectors.collection.selectBookCollection);
 
-
-  constructor(private store: Store) {
-
-  }
+  constructor(private store: Store) {}
 }
