@@ -28,6 +28,8 @@ jobs:
     name: Install
     runs-on: ubuntu-22.04
     timeout-minutes: 10
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - uses: actions/checkout@v3
       - name: Install devbox
