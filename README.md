@@ -16,7 +16,12 @@ But you're required to provide them for other developers, too.
 
 We cannot rely on devs to have the required tools in their dev envs.
 
-### Add a new Tool
+### Adding a new Tool
 
 https://www.jetpack.io/devbox/docs/guides/pinning_packages/
 https://www.jetpack.io/devbox/docs/guides/using_flakes/
+
+## Translations
+
+We expect translations to be done in the Frontend-Application.
+The backend application should not handle any translations.
