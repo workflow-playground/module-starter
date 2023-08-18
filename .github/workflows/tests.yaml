@@ -82,7 +82,7 @@ jobs:
         with:
           enable-cache: true
       - name: Build
-        run: devbox run just build
+        run: devbox run just backend/build
       - run: devbox run just backend/test-unit fail-fast=true
   
   backend-tests:

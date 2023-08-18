@@ -4,6 +4,7 @@
 install:
     just e2e/install
     just frontend/install
+    just backend/install
 
 build:
     just backend/build
