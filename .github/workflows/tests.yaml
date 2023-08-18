@@ -54,23 +54,9 @@ jobs:
       - name: Build
         run: devbox run just backend/build
       - run: devbox run just backend/static-analysis
-  
-  backend-unit-tests:
-    name: Backend Unit-Tests
-    runs-on: ubuntu-22.04
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v3
-      - name: Install devbox
-        uses: jetpack-io/devbox-install-action@v0.5.0
-        with:
-          enable-cache: true
-      - name: Build
-        run: devbox run just backend/build
-      - run: devbox run just backend/test-unit fail-fast=true
-  
-  backend-tests:
-    name: Backend Tests
+
+  backend-test:
+    name: Backend Test
     runs-on: ubuntu-22.04
     timeout-minutes: 10
     steps:
@@ -115,6 +101,6 @@ jobs:
       - name: Lint
         run: devbox run just frontend/lint
       - name: Unit Tests
-        run: devbox run just frontend/tests
+        run: devbox run just frontend/test
       - name: Build
         run: devbox run just frontend/build
