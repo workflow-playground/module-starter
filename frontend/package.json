@@ -15,11 +15,6 @@
     "lint:check": "eslint --ext .ts,.js,.html src",
     "lint": "run-s lint:*"
   },
-  "config": {
-    "commitizen": {
-      "path": "@commitlint/cz-commitlint"
-    }
-  },
   "dependencies": {
     "@angular/animations": "16.1.6",
     "@angular/cdk": "16.1.5",
