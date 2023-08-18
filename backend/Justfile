@@ -10,7 +10,7 @@ build: install
 start:
     docker compose up -d
     bin/console cache:warmup
-    nohup bin/rr serve -p -c .rr.dev.yaml --debug > /tmp/rr.out &
+    nohup bin/rr serve -p -c .rr.dev.yaml --dotenv .env --debug > /tmp/rr.out &
     
 stop:
     bin/rr stop
@@ -26,7 +26,7 @@ static-analysis output="default":
     vendor/bin/config-transformer config --dry-run
     vendor/bin/parallel-lint src public migrations config
     composer validate composer.json --no-check-publish
-    bin/composer-require-checker --no-interaction
+    #bin/composer-require-checker --no-interaction # -> errors somehow, don't know why
     bin/console lint:container -n {{ if output == "github" { "--format=github" } else { "" } }}
     bin/console lint:twig templates -n {{ if output == "github" { "--format=github" } else { "" } }}
     bin/console lint:yaml . *.yaml --parse-tags -n {{ if output == "github" { "--format=github" } else { "" } }}

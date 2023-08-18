@@ -137,3 +137,6 @@ dist
 
 # Angular
 .angular
+
+# PHPUnit cache
+.phpunit.result.cache

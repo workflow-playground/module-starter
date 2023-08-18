@@ -14,6 +14,9 @@ start:
     just backend/start
     just frontend/start
     
+stop:
+    just backend/stop
+
 fix:
     just backend/fix
     just frontend/fix

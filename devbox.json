@@ -13,7 +13,8 @@
     "php82Extensions.xdebug@latest",
     "php82Packages.phive@latest",
     "nodejs@18",
-    "nodePackages.pnpm@8.6.0"
+    "nodePackages.pnpm@8.6.0",
+    "php82Extensions.amqp@latest"
   ],
   "env": {
     "LC_ALL": "en_US.UTF-8"
