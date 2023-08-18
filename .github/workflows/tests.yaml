@@ -92,7 +92,7 @@ jobs:
     needs:
       - install
     runs-on: ubuntu-22.04
-    timeout-minutes: 20
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
       - name: Install devbox
@@ -126,6 +126,8 @@ jobs:
       - install
     runs-on: ubuntu-22.04
     timeout-minutes: 10
+    env:
+      NPM_TOKEN: "not_needed_for_offline_install"
     steps:
       - uses: actions/checkout@v3
       - name: Install devbox
