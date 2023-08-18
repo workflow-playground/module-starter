@@ -24,20 +24,6 @@ permissions:
   contents: read
   
 jobs:
-  install:
-    name: Install
-    runs-on: ubuntu-22.04
-    timeout-minutes: 10
-    env:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-    steps:
-      - uses: actions/checkout@v3
-      - name: Install devbox
-        uses: jetpack-io/devbox-install-action@v0.5.0
-        with:
-          enable-cache: true
-      - run: devbox run just install
-
   comment-composer-lock-diff:
     name: Comment composer.lock diff
     runs-on: ubuntu-latest
@@ -57,8 +43,6 @@ jobs:
   
   static-analysis:
     name: Backend static analysis
-    needs:
-      - install
     runs-on: ubuntu-22.04
     timeout-minutes: 10
     steps:
@@ -73,8 +57,6 @@ jobs:
   
   backend-unit-tests:
     name: Backend Unit-Tests
-    needs:
-      - install
     runs-on: ubuntu-22.04
     timeout-minutes: 10
     steps:
@@ -89,8 +71,6 @@ jobs:
   
   backend-tests:
     name: Backend Tests
-    needs:
-      - install
     runs-on: ubuntu-22.04
     timeout-minutes: 10
     steps:
@@ -107,8 +87,6 @@ jobs:
         
   security-check:
     name: Security check
-    needs:
-    - install
     runs-on: ubuntu-22.04
     timeout-minutes: 10
     steps:
@@ -122,12 +100,10 @@ jobs:
 
   frontend:
     name: Frontend
-    needs:
-      - install
     runs-on: ubuntu-22.04
     timeout-minutes: 10
     env:
-      NPM_TOKEN: "not_needed_for_offline_install"
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - uses: actions/checkout@v3
       - name: Install devbox
@@ -135,7 +111,7 @@ jobs:
         with:
           enable-cache: true
       - name: Install dependencies
-        run: devbox run just frontend/install offline=true
+        run: devbox run just frontend/install
       - name: Lint
         run: devbox run just frontend/lint
       - name: Unit Tests
