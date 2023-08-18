@@ -1,5 +1,5 @@
-install:
-    pnpm install --frozen-lockfile
+install offline="false":
+    pnpm install --frozen-lockfile {{ if offline != "false" { "--offline" } else { "" } }}
 
 test:
     pnpm test

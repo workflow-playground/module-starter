@@ -1,8 +1,8 @@
 # https://just.systems/man/en/
 # Just is inspired by makefile syntay but avoids some ot its [caveats](https://just.systems/man/en/chapter_75.html).
 
-install:
-    pnpm install --frozen-lockfile
+install offline="false":
+    pnpm install --frozen-lockfile {{ if offline != "false" { "--offline" } else { "" } }}
 
 build:
     pnpm build
