@@ -1,6 +1,6 @@
 install:
     @echo "Installing dependencies..."
-    symfony composer install
+    symfony composer install --ignore-platform-req=ext-amqp
     yes | phive install
     @echo "Installing Roadrunner..."
     yes | vendor/bin/rr get --location bin/

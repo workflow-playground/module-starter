@@ -10,11 +10,14 @@
     "mysql@latest",
     "coreutils@latest",
     "direnv@latest",
-    "php82Extensions.xdebug@latest",
-    "php82Packages.phive@latest",
     "nodejs@18",
     "nodePackages.pnpm@8.6.0",
-    "php82Extensions.amqp@latest"
+    "php82Packages.phive@latest",
+    "php82Extensions.xdebug@latest",
+    "php82Packages.composer@latest",
+    "php82Extensions.amqp@latest",
+    "php82Extensions.redis@latest",
+    "php82Extensions.curl@latest"
   ],
   "env": {
     "LC_ALL": "en_US.UTF-8"
