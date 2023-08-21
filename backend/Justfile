@@ -1,6 +1,9 @@
+help:
+    composer --help
+
 install:
     @echo "Installing dependencies..."
-    symfony composer install --ignore-platform-req=ext-amqp
+    composer install
     yes | phive install
     @echo "Installing Roadrunner..."
     yes | vendor/bin/rr get --location bin/
@@ -22,7 +25,6 @@ fix:
     vendor/bin/php-cs-fixer fix --diff
     
 static-analysis output="default":
-    XDEBUG_MODE=off
     vendor/bin/config-transformer config --dry-run
     vendor/bin/parallel-lint src public migrations config
     composer validate composer.json --no-check-publish

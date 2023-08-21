@@ -24,65 +24,43 @@ permissions:
   contents: read
   
 jobs:
-  comment-composer-lock-diff:
-    name: Comment composer.lock diff
-    runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
+  environment:
+    name: Install on OS
+    strategy: 
+      matrix:
+        os: [ ubuntu-latest, macos-latest ] # windows-latest does not work
+    runs-on: ${{ matrix.os }}
+    continue-on-error: true
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Install devbox
+        uses: jetpack-io/devbox-install-action@v0.5.0
+
+  backend:
+    name: Backend
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
       - name: Comment composer.lock diff
+        if: github.event_name == 'pull_request'
         uses: WyriHaximus/github-action-composer.lock-diff@v2
         with:
           workingDirectory: backend/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  
-  static-analysis:
-    name: Backend static analysis
-    runs-on: ubuntu-22.04
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v3
       - name: Install devbox
         uses: jetpack-io/devbox-install-action@v0.5.0
-        with:
-          enable-cache: true
-      - name: Build
-        run: devbox run just backend/build
-      - run: devbox run just backend/static-analysis
-
-  backend-test:
-    name: Backend Test
-    runs-on: ubuntu-22.04
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v3
-      - name: Install devbox
-        uses: jetpack-io/devbox-install-action@v0.5.0
-        with:
-          enable-cache: true
-      - name: Build
-        run: devbox run just backend/build
-      - name: Start
-        run: devbox run just backend/start && devbox run ./wait-until.sh "mysql --host=127.0.0.1 --port=23306 --database=app_test --user=test --password=test -e \"SHOW TABLES\"" 120
-      - run: devbox run just backend/test fail-fast=true
-        
-  security-check:
-    name: Security check
-    runs-on: ubuntu-22.04
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v3
-      - name: Install devbox
-        uses: jetpack-io/devbox-install-action@v0.5.0
-        with:
-          enable-cache: true
-      - name: Build
-        run: devbox run just backend/security-check
+      - run: devbox run --pure just backend/build
+      - run: devbox run --pure just backend/security-check
+      - run: devbox run --pure just backend/static-analysis
+      - name: Start & wait for db to be ready
+        run: devbox run --pure just backend/start && devbox run --pure ./wait-until.sh "mysql --host=127.0.0.1 --port=23306 --database=app_test --user=test --password=test -e \"SHOW TABLES\"" 120
+      - run: devbox run --pure just backend/test fail-fast=true
 
   frontend:
     name: Frontend
@@ -94,13 +72,11 @@ jobs:
       - uses: actions/checkout@v3
       - name: Install devbox
         uses: jetpack-io/devbox-install-action@v0.5.0
-        with:
-          enable-cache: true
       - name: Install dependencies
-        run: devbox run just frontend/install
+        run: devbox run --pure just frontend/install
       - name: Lint
-        run: devbox run just frontend/lint
+        run: devbox run --pure just frontend/lint
       - name: Unit Tests
-        run: devbox run just frontend/test
+        run: devbox run --pure just frontend/test
       - name: Build
-        run: devbox run just frontend/build
+        run: devbox run --pure just frontend/build

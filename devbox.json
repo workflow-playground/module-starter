@@ -1,6 +1,5 @@
 {
   "packages": [
-    "php@8.2",
     "gh@latest",
     "git@latest",
     "httpie@latest",
@@ -14,15 +13,16 @@
     "nodePackages.pnpm@8.6.0",
     "php82Packages.phive@latest",
     "php82Extensions.xdebug@latest",
-    "php82Packages.composer@latest",
     "php82Extensions.amqp@latest",
     "php82Extensions.redis@latest",
-    "php82Extensions.curl@latest"
+    "php82Extensions.curl@latest",
+    "vim@latest",
+    "php82@latest"
   ],
   "env": {
-    "LC_ALL": "en_US.UTF-8"
+    "XDEBUG_MODE": "off"
   },
-  "shell": {
+  "shell": {  
     "init_hook": [
       "git config --global push.autoSetupRemote true",
       "git config --global pull.rebase true"
