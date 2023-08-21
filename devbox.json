@@ -8,21 +8,20 @@
     "symfony-cli@latest",
     "mysql@latest",
     "coreutils@latest",
-    "direnv@latest",
+    "vim@latest",
     "nodejs@18",
     "nodePackages.pnpm@8.6.0",
     "php82Packages.phive@latest",
     "php82Extensions.xdebug@latest",
-    "php82Extensions.amqp@latest",
-    "php82Extensions.redis@latest",
     "php82Extensions.curl@latest",
-    "vim@latest",
-    "php82@latest"
+    "php82@latest",
+    "php82Packages.composer@latest",
+    "gnupg@latest"
   ],
   "env": {
     "XDEBUG_MODE": "off"
   },
-  "shell": {  
+  "shell": {
     "init_hook": [
       "git config --global push.autoSetupRemote true",
       "git config --global pull.rebase true"

@@ -15,7 +15,7 @@ return static function (FrameworkConfig $framework, ContainerConfigurator $conta
         ->dsn(
             'test' === $container->env()
                 ? 'test://'
-                : env('MESSENGER_TRANSPORT_DSN').'/failed?auto_setup=true'
+                : env('MESSENGER_TRANSPORT_DSN_FAILED')
         );
     $messenger->failureTransport('failed');
 
@@ -24,7 +24,7 @@ return static function (FrameworkConfig $framework, ContainerConfigurator $conta
         ->dsn(
             'test' === $container->env()
                 ? 'test://'
-                : env('MESSENGER_TRANSPORT_DSN').'/async?auto_setup=true'
+                : env('MESSENGER_TRANSPORT_DSN_ASYNC')
         );
 
     $messenger->routing(Test::class)->senders(['async']);

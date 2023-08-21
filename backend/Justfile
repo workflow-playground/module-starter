@@ -13,10 +13,12 @@ build: install
 start:
     docker compose up -d
     bin/console cache:warmup
-    nohup bin/rr serve -p -c .rr.dev.yaml --dotenv .env --debug > /tmp/rr.out &
-    
+    nohup bin/rr serve --pid --config .rr.dev.yaml --dotenv .env --debug > /tmp/rr.out &
+    nohup symfony run --watch=config,src,templates,vendor symfony console messenger:consume async --limit=400 --time-limit=300 --no-interaction -vv > /tmp/messenger.out &
+
 stop:
-    bin/rr stop
+    symfony console messenger:stop-workers
+    pkill rr
     docker compose stop
 
 fix:

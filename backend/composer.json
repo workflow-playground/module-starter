@@ -5,7 +5,6 @@
     "prefer-stable": true,
     "require": {
         "php": ">=8.2",
-        "ext-amqp": "*",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-intl": "*",
@@ -19,8 +18,8 @@
         "psr/log": "^3.0",
         "spiral/roadrunner-cli": "^2.5",
         "spiral/roadrunner-metrics": "^3.0",
-        "symfony/amqp-messenger": "6.3.*",
         "symfony/console": "6.3.*",
+        "symfony/doctrine-messenger": "6.3.*",
         "symfony/dotenv": "6.3.*",
         "symfony/expression-language": "6.3.*",
         "symfony/flex": "^2",

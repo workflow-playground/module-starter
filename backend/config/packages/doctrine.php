@@ -9,6 +9,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         'dbal' => [
             'url' => '%env(resolve:DATABASE_URL)%',
             'profiling_collect_backtrace' => '%kernel.debug%',
+            'schema_filter' => '~^(?!messenger_messages)~',
         ],
         'orm' => [
             'auto_generate_proxy_classes' => true,
