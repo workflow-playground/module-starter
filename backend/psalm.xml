@@ -22,6 +22,11 @@
     <stubs>
         <file name="vendor/symfony/dependency-injection/Loader/Configurator/ContainerConfigurator.php" />
     </stubs>
+    <forbiddenFunctions>
+        <function name="dd"/>
+        <function name="die"/>
+        <function name="var_dump"/>
+    </forbiddenFunctions>
     <plugins>
         <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin">
             <containerXml>var/cache/dev/App_KernelDevDebugContainer.xml</containerXml>
